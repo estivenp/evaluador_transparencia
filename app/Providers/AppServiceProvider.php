@@ -3,7 +3,13 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Aplicacion\Services\PrincipalService;
+use App\Aplicacion\Servicios\PrincipalService;
+use App\Dominio\Interfaces\Evaluacion\EvaluacionRepositoryInterface;
+use App\Persistencia\Repositorios\Evaluacion\EvaluacionRepository;
+use App\Dominio\Interfaces\PlataformaWeb\PlataformaWebRepositoryInterface;
+use App\Persistencia\Repositorios\PlataformaWeb\PlataformaWebRepository;
+use App\Dominio\Interfaces\Evaluacion\TablaResultadoInterface;
+use App\Aplicacion\Servicios\Evaluacion\TablaResultadoService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -12,9 +18,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        //Servicios
         $this->app->bind(PrincipalService::class, function ($app) {
             return new PrincipalService();
         });
+        $this->app->bind(TablaResultadoInterface::class, TablaResultadoService::class);
+
+
+        //Repositorios
+        $this->app->bind(PlataformaWebRepositoryInterface::class, PlataformaWebRepository::class);
+        $this->app->bind(EvaluacionRepositoryInterface::class, EvaluacionRepository::class);
     }
 
     /**
