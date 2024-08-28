@@ -19,10 +19,7 @@
                     <h5 class="mb-4 titulo_blanco">
                     Analiza y mide la transparencia en la gestión de los datos de una plataforma web</h5>
                     <p class="card-text">
-                        DTWebEvaluator es una herramienta innovadora diseñada para evaluar la transparencia en la gestión de datos de las plataformas web. Utilizando un conjunto de métricas cuidadosamente seleccionadas, nuestra aplicación analiza las características principales de los sitios web para determinar qué tan transparentes son en el manejo de la información de los usuarios.
-                    </p>
-                    <p class="card-text">
-                        Nuestro objetivo es proporcionar una evaluación cuantitativa fácil de entender, que permita a usuarios, desarrolladores y propietarios de sitios web comprender rápidamente el nivel de transparencia de una plataforma específica. Al generar un resultado numérico, facilitamos la comparación entre diferentes sitios y promovemos la mejora continua en las prácticas de gestión de datos.
+                        DTWebEvaluator es una herramienta que mide la transparencia en la gestión de datos de plataformas web. Mediante métricas específicas, analiza sitios web para cuantificar su nivel de transparencia en el manejo de información de usuarios. Ofrece una evaluación numérica fácil de interpretar, permitiendo comparaciones entre sitios y fomentando mejores prácticas en la gestión de datos para usuarios, desarrolladores y propietarios web.
                     </p>
                     <div class="text-center mt-4" style="margin-bottom:20px">
                         <a class="btn btn-block bg-gradient-success btn-flat" style="width: 80%;height: 50px;font-size: x-large;font-weight: bold;" 
@@ -36,12 +33,11 @@
         </div>
     </div>
 </div>
-phpinfo()
 @endsection
 @section('scripts')
 <script>
 function analizarPagina(){
-    window.location.href = '/vistaAgregarPagina';
+    window.location.href = '/analizarPagina';
 }
 </script>
 @endsection

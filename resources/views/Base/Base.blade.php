@@ -5,24 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'DTWebEvaluator')</title>
+
+     <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-     <!-- Plantilla admin-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
-    <title>DTWebEvaluator</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-    <!-- AdminLTE 3 CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/css/adminlte.min.css">
-
-    <!-- JQuery -->
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+
+    <!-- <link rel="stylesheet" href="{{ asset('css/style.css') }}"> -->
 </head>
 <body class="hold-transition layout-top-nav">
     <div class="wrapper">
@@ -55,7 +51,7 @@
         </nav>
 
         <main>
-            <div class="content-wrapper bg-image" id="contenido">
+            <div class="content-wrapper bg-image" id="contenidoPrincipal">
                 @yield('contenido')
             </div>
         </main>
@@ -72,12 +68,13 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/js/adminlte.min.js"></script>
+    @stack('scripts')
     <script>
     function inicio(){
         window.location.href = '/';

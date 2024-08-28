@@ -15,8 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_plataforma')->constrained('plataforma_web');
             $table->date('fecha_evaluacion');
-            $table->float('resultado_final');
+            $table->float('resultado_final')->nullable();
+            $table->string('token')->unique();
+            $table->timestamp('token_expira_en')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

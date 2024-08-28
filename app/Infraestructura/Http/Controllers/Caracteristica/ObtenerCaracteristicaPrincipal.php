@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Infraestructura\Http\Controllers\PaginaWeb;
+namespace App\Infraestructura\Http\Controllers\Caracteristica;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use App\Dominio\Interfaces\PlataformaWeb\PlataformaWebRepositoryInterface;
-use Illuminate\Support\Facades\View;
 
-class AgregarPaginaWebController extends BaseController
+class ObtenerCaracteristicaPrincipalController extends BaseController
 {
     private $plataformaWebRepository;
 
@@ -20,17 +19,20 @@ class AgregarPaginaWebController extends BaseController
     {
         try{
             $datos = $request->all();
-            $estado = 'success';
 
             $resultados = $this->plataformaWebRepository->obtenerPlataformaPorNombreYUrl($datos['nombre'], $datos['url']);
-            if (!$resultados->isNotEmpty()) {
+            if ($resultados->isNotEmpty()) {
+                return response()->json([
+                    'estado' => 'success',
+                    'exite' => true,
+                ], 200);
+            } else {
                 $this->plataformaWebRepository->create($datos);
+                return response()->json([
+                    'estado' => 'success',
+                    'exite' => false,
+                ], 200);
             }
-            $vistaDisponibilidad = View::make('caracteristicaPrincipal')->render();
-            return response()->json([
-                'estado' => true,
-                'vista' => $vistaDisponibilidad
-            ], 200);
         }
         catch(\Throwable $ex){
             return response()->json([

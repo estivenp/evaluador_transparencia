@@ -1,0 +1,22 @@
+INSERT INTO respuesta (descripcion)
+VALUES
+('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Muy insatisfecho) es la calificacion mas baja y 5 la mas alta (Muy satisfecho)'),
+('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Muy dificil) es la calificacion mas baja y 5 la mas alta (Excelente)'),
+('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Muy deficiente) es la calificacion mas baja y 5 la mas alta (Excelente)'),
+('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Muy frecuentemente) es la calificacion mas baja y 5 la mas alta (Nunca)'),
+('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Muy difícil) es la calificacion mas baja y 5 la mas alta (Muy fácil)'),
+('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Muy inflexible) es la calificacion mas baja y 5 la mas alta (Muy flexible)'),
+('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Muy inconsistente) es la calificacion mas baja y 5 la mas alta (Muy consistente)'),
+('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Muy no uniforme) es la calificacion mas baja y 5 la mas alta (Muy uniforme)'),
+('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Muy incoherente) es la calificacion mas baja y 5 la mas alta (Muy coherente)'),
+('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Muy desactualizada) es la calificacion mas baja y 5 la mas alta (Muy actualizada)'),
+('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Nada relevante) es la calificacion mas baja y 5 la mas alta (Muy relevante)'),
+('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Muy incompleta) es la calificacion mas baja y 5 la mas alta (Muy completa)'),
+('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Nada exhaustiva) es la calificacion mas baja y 5 la mas alta (Muy exhaustiva)'),
+('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Nada seguro) es la calificacion mas baja y 5 la mas alta (Muy seguro)'),
+('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Nada claro) es la calificacion mas baja y 5 la mas alta (Muy claro)'),
+('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Nunca) es la calificacion mas baja y 5 la mas alta (Muy frecuentemente)'),
+('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Nada efectiva) es la calificacion mas baja y 5 la mas alta (Muy efectiva)'),
+('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Nada confiable) es la calificacion mas baja y 5 la mas alta (Muy confiable)'),
+('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Nada util) es la calificacion mas baja y 5 la mas alta (Muy util)'),
+('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Nada confiado) es la calificacion mas baja y 5 la mas alta (Muy confiado)');

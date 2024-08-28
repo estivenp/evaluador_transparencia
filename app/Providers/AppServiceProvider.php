@@ -10,6 +10,10 @@ use App\Dominio\Interfaces\PlataformaWeb\PlataformaWebRepositoryInterface;
 use App\Persistencia\Repositorios\PlataformaWeb\PlataformaWebRepository;
 use App\Dominio\Interfaces\Evaluacion\TablaResultadoInterface;
 use App\Aplicacion\Servicios\Evaluacion\TablaResultadoService;
+use App\Dominio\Interfaces\Caracteristica\CaracteristicaRepositoryInterface;
+use App\Dominio\Interfaces\Caracteristica\ObtenerDatosCaracteristicaInterface;
+use App\Aplicacion\Servicios\Caracteristica\ObtenerDatosCaracteristicaService;
+use App\Persistencia\Repositorios\Caracteristica\CaracteristicaRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,11 +27,13 @@ class AppServiceProvider extends ServiceProvider
             return new PrincipalService();
         });
         $this->app->bind(TablaResultadoInterface::class, TablaResultadoService::class);
+        $this->app->bind(ObtenerDatosCaracteristicaInterface::class, ObtenerDatosCaracteristicaService::class);
 
 
         //Repositorios
         $this->app->bind(PlataformaWebRepositoryInterface::class, PlataformaWebRepository::class);
         $this->app->bind(EvaluacionRepositoryInterface::class, EvaluacionRepository::class);
+        $this->app->bind(CaracteristicaRepositoryInterface::class, CaracteristicaRepository::class);
     }
 
     /**

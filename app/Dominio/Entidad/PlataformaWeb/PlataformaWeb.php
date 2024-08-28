@@ -4,6 +4,8 @@ namespace App\Dominio\Entidad\PlataformaWeb;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Dominio\Entidad\Evaluacion;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class PlataformaWeb extends Model
 {

@@ -9,6 +9,6 @@ class PrincipalController extends BaseController
 {
     public function index()
     {
-        return view('Principal');
+        return view('principal');
     }
 }

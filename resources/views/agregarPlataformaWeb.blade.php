@@ -1,6 +1,6 @@
 @extends('Base.Base2')
 @section('formulario')
-<div class="form-wrapper">
+<div class="form-wrapper" id="contenidoFormulario">
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Análisis de Página Web</h3>
@@ -26,8 +26,8 @@
                 <ol>
                     <li>Ingresa el nombre y la URL de la plataforma web que deseas analizar.</li>
                     <li>Inicia el análisis para acceder a las métricas de evaluación.</li>
-                    <li>Completa las métricas para cada característica clave de transparencia.</li>
-                    <li>Descubre el nivel de transparencia de la plataforma.</li>
+                    <li>Completa las métricas para cada característica de transparencia.</li>
+                    <li>Descubre el nivel de transparencia en la gestion de los datos de la plataforma web.</li>
                 </ol>
                 <p>
                     Esta herramienta te permitirá evaluar aspectos cruciales como disponibilidad, usabilidad, 
@@ -64,11 +64,13 @@ $(document).ready(function() {
                         class: 'bg-success',
                         title: '¡Éxito!',
                         subtitle: 'Operación completada',
-                        body: 'La acción se ha realizado correctamente.',
+                        body: 'Iniciando analisis.',
                         icon: 'fas fa-check-circle',
                         autohide: true,
                         delay: 3000
                     });
+                    document.getElementById('contenidoFormulario').innerHTML = response.vista;
+                    selectorSidebarItem('disponibilidad');
                 }
                 else{
                     $(document).Toasts('create', {

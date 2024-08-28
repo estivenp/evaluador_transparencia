@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Infraestructura\Http\Controllers\PrincipalController;
 use App\Infraestructura\Http\Controllers\PaginaWeb\VistaAgregarPaginaWebController;
 use App\Infraestructura\Http\Controllers\PaginaWeb\AgregarPaginaWebController;
+use App\Infraestructura\Http\Controllers\Caracteristica\MostrarCaracteristicaController;
+use App\Infraestructura\Http\Controllers\Caracteristica\ObteneDatosCaracteristicaController;
 use App\Infraestructura\Http\Controllers\Evaluacion\TablaResultadoController;
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +20,11 @@ use App\Infraestructura\Http\Controllers\Evaluacion\TablaResultadoController;
 
 Route::get('/', [PrincipalController::class, 'index']);
 
-Route::get('/vistaAgregarPagina', [VistaAgregarPaginaWebController::class, 'index']);
+Route::get('/analizarPagina', [VistaAgregarPaginaWebController::class, 'index']);
+
+Route::get('/mostrarCaracteristica', [MostrarCaracteristicaController::class, 'index']);
+
+Route::get('/obtenerDatosCaracteristica', [ObteneDatosCaracteristicaController::class, 'obtenerDatos']);
 
 Route::post('/agregarPagina', [AgregarPaginaWebController::class, 'agregar']);
 
