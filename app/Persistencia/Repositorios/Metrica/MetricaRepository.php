@@ -34,5 +34,9 @@ class MetricaRepository implements MetricaRepositoryInterface
         $evaluacion = Metrica::findOrFail($id);
         $evaluacion->delete();
     }
+    public function obtenerMetricaPorCaracteristca($id)
+    {
+        return Metrica::where('id_caracteristica', '=',$nombre)->get();
+    }
 
 }

@@ -177,3 +177,12 @@ VALUES
 (20, 'Neutral', 3),
 (20, 'Confiado', 4),
 (20, 'Muy confiado', 5);
+
+-- Confianza
+INSERT INTO opcion_respuesta (id_respuesta, texto, valor)
+VALUES
+(21, 'Nada preciso', 1),
+(21, 'Poco preciso', 2),
+(21, 'Neutral', 3),
+(21, 'Preciso', 4),
+(21, 'Muy Preciso', 5);

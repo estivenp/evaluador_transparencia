@@ -10,7 +10,7 @@ use App\Dominio\Entidad\Evaluacion\Evaluacion;
 class ResultadoMetrica extends Model
 {
     protected $table = 'resultado_metrica';
-    protected $fillable = ['id_metrica', 'id_evaluacion', 'resultado'];
+    protected $fillable = ['id_metrica', 'id_evaluacion', 'resultado', 'formula'];
 
     public function metrica(): BelongsTo
     {

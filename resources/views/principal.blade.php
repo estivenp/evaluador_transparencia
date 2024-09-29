@@ -18,7 +18,7 @@
                 <div style="color:white">
                     <h5 class="mb-4 titulo_blanco">
                     Analiza y mide la transparencia en la gestión de los datos de una plataforma web</h5>
-                    <p class="card-text">
+                    <p class="card-text" style="text-align: justify;">
                         DTWebEvaluator es una herramienta que mide la transparencia en la gestión de datos de plataformas web. Mediante métricas específicas, analiza sitios web para cuantificar su nivel de transparencia en el manejo de información de usuarios. Ofrece una evaluación numérica fácil de interpretar, permitiendo comparaciones entre sitios y fomentando mejores prácticas en la gestión de datos para usuarios, desarrolladores y propietarios web.
                     </p>
                     <div class="text-center mt-4" style="margin-bottom:20px">

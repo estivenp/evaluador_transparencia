@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Dominio\Entidad\Metrica\Metrica;
+use App\Dominio\Entidad\ValorCaracteristica\ValorCaracteristica;
 
 class Caracteristica extends Model
 {
@@ -33,4 +34,10 @@ class Caracteristica extends Model
     {
         return $this->hasMany(Metrica::class, 'id_caracteristica');
     }
+
+    public function valorCaracteristica(): HasMany
+    {
+        return $this->hasMany(ValorCaracteristica::class, 'id_caracteristica');
+    }
+
 }

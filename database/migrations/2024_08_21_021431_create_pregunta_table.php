@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('pregunta', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_componente_formula')->constrained('componente_formula');
+            $table->foreignId('id_respuesta')->constrained('respuesta');
             $table->text('texto');
             $table->integer('orden');
             $table->timestamps();

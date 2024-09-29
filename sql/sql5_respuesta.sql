@@ -19,4 +19,5 @@ VALUES
 ('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Nada efectiva) es la calificacion mas baja y 5 la mas alta (Muy efectiva)'),
 ('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Nada confiable) es la calificacion mas baja y 5 la mas alta (Muy confiable)'),
 ('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Nada util) es la calificacion mas baja y 5 la mas alta (Muy util)'),
-('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Nada confiado) es la calificacion mas baja y 5 la mas alta (Muy confiado)');
+('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Nada confiado) es la calificacion mas baja y 5 la mas alta (Muy confiado)'),
+('Hace referencia al valor entre 1 y 5 que se le puede asignar a las preguntas, donde 1 (Nada preciso) es la calificacion mas baja y 5 la mas alta (Muy preciso)');

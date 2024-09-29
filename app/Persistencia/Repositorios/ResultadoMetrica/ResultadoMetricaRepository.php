@@ -35,4 +35,20 @@ class ResultadoMetricaRepository implements ResultadoMetricaRepositoryInterface
         $evaluacion->delete();
     }
 
+    public function obtenerResultadoMetricaPorEvaluacionYMetrica($idEvaluacion,$idMetrica)
+    {
+        return ResultadoMetrica::where('id_evaluacion','=', $idEvaluacion)
+            ->where('id_metrica', '=',$idMetrica)
+            ->first();
+    }
+
+    public function obtenerResultadosMetricaPorEvaluacionYCaracteristica($idEvaluacion, $idCaracteristica)
+    {
+        return ResultadoMetrica::join('metrica', 'resultado_metrica.id_metrica', '=', 'metrica.id')
+            ->join('caracteristica', 'metrica.id_caracteristica', '=', 'caracteristica.id')
+            ->where('resultado_metrica.id_evaluacion', $idEvaluacion)
+            ->where('caracteristica.id', $idCaracteristica)
+            ->select('metrica.id', 'metrica.abreviatura', 'resultado_metrica.resultado', 'resultado_metrica.formula')
+            ->get();
+    }
 }

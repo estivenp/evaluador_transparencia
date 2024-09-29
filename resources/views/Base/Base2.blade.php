@@ -12,13 +12,13 @@
             </button>
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <li class="nav-item">
+                    <li class="nav-item" id="pagina">
                         <a href="#" class="nav-link active" onclick="analizarPagina()">
                             <i class="nav-icon fas fa-globe"></i>
                             <p>Página web</p>
                         </a>
                     </li>
-                    <li class="nav-item has-treeview">
+                    <li class="nav-item has-treeview caracteristica">
                         <a href="#" class="nav-link" id="disponibilidad" onclick="verCaracteristica('disponibilidad')">
                             <i class="nav-icon fas fa-cogs"></i>
                             <p>
@@ -59,7 +59,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-treeview">
+                    <li class="nav-item has-treeview caracteristica">
                         <a href="#" class="nav-link" id="usabilidad" onclick="verCaracteristica('usabilidad')">
                             <i class="nav-icon fas fa-cogs"></i>
                             <p>
@@ -88,7 +88,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-treeview" >
+                    <li class="nav-item has-treeview caracteristica" >
                         <a href="#" class="nav-link" id="informatividad" onclick="verCaracteristica('informatividad')">
                             <i class="nav-icon fas fa-cogs"></i>
                             <p>
@@ -117,7 +117,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-treeview" >
+                    <li class="nav-item has-treeview caracteristica" >
                         <a href="#" class="nav-link" id="seguridad" onclick="verCaracteristica('seguridad')">
                             <i class="nav-icon fas fa-cogs"></i>
                             <p>
@@ -140,7 +140,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-treeview" >
+                    <li class="nav-item has-treeview caracteristica" >
                         <a href="#" class="nav-link" id="auditabilidad" onclick="verCaracteristica('auditabilidad')">
                             <i class="nav-icon fas fa-cogs"></i>
                             <p>
@@ -169,6 +169,15 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item has-treeview" >
+                        <a href="#" class="nav-link" id="transparencia" onclick="verTransparencia()" style="display:none">
+                            <i class="nav-icon fas fa-cogs"></i>
+                            <p>
+                                Transparencia
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -188,23 +197,96 @@
         'background-color': '',
         'color': ''
     };
+
+    function ocultarCaracteristicas() {
+        const elementos = document.getElementsByClassName('caracteristica');
+        for (let i = 0; i < elementos.length; i++) {
+            elementos[i].style.display = 'none';
+        }
+        debugger
+        const transparencia = document.getElementById('transparencia');
+        transparencia.style.display = 'none';
+    }
+
+    function mostrarCaracteristicas() {
+        const elementos = document.getElementsByClassName('caracteristica');
+        for (let i = 0; i < elementos.length; i++) {
+            elementos[i].style.display = '';
+            id =  elementos[i].id;
+        }
+        debugger
+
+        if(localStorage.getItem('transparencia')){
+            mostrarTransparencia()
+        }
+    }
+
+    function mostrarTransparencia(){
+        const transparencia = document.getElementById('transparencia');
+        transparencia.style.display = '';
+    }
+
+    function verTransparencia(){
+        $.ajax({
+                url: '/verTransparencia',
+                data:{'token':localStorage.getItem('evaluacionToken')},
+                type: 'POST',
+                dataType: 'json',
+                success: function(response) {
+                    localStorage.setItem('transparencia',true)
+                    mostrarTransparencia()
+                    selectorSidebarItem('transparencia');
+                    document.getElementById('contenidoFormulario').innerHTML = response.vista;
+                    crearGraficaNavegadores(['Cumple','No cumple'], [71, 29], "grafica_transparencia");
+                },
+                error: function(xhr, status, error) {
+                    $(document).Toasts('create', {
+                        class: 'bg-danger',
+                        title: '¡Error!',
+                        subtitle: 'Operación fallida',
+                        body: 'Fallo en la operacion.',
+                        icon: 'fas fa-check-circle',
+                        autohide: true,
+                        delay: 3000
+                    });
+                }
+            });
+    }
+
     $(document).ready(function() {
-        function ocultarOpciones(){
-            $('#disponibilidad').css({
-                    'display': 'none'
-                });
-            $('#usabilidad').css({
-                'display': 'none'
+        mostrarCaracteristicas()
+        var token = localStorage.getItem('evaluacionToken')
+        if(token != null){
+            $.ajax({
+                url: '/validarToken',
+                data: {'token':token},
+                type: 'POST',
+                dataType: 'json',
+                success: function(response) {
+                    if(response.valido){
+                        $('#nombre').val(response.plataforma_nombre)
+                        $('#url').val(response.plataforma_url)
+                    }
+                    else{
+                        ocultarCaracteristicas();
+                        localStorage.removeItem('evaluacionToken')
+                    }
+                },
+                error: function(xhr, status, error) {
+                    $(document).Toasts('create', {
+                        class: 'bg-danger',
+                        title: '¡Error!',
+                        subtitle: 'Operación fallida',
+                        body: 'Fallo en la operacion.',
+                        icon: 'fas fa-check-circle',
+                        autohide: true,
+                        delay: 3000
+                    });
+                }
             });
-            $('#informatividad').css({
-                    'display': 'none'
-                });
-            $('#seguridad').css({
-                'display': 'none'
-            });
-            $('#auditabilidad').css({
-                    'display': 'none'
-                });
+        }
+        else{
+            ocultarCaracteristicas();
         }
 
         function SidebarSelector() {
@@ -226,48 +308,10 @@
             });
         }
 
-        // ocultarOpciones();
         SidebarSelector();
     });
 
-    // function selectorSidebarItem(itemId) {
-
-    //     // Deseleccionar todos los elementos activos
-    //     $('.sidebar-container .nav-link').removeClass('active').css(inactivo);
-
-    //     // Seleccionar el nuevo elemento
-    //     let $selectedItem = $('#' + itemId);
-    //     $selectedItem.addClass('active').css(activo);
-
-    //     // Si el elemento está en un submenú, aplicar estilos específicos y activar el padre
-    //     if ($selectedItem.parent().hasClass('has-treeview')) {
-    //         let $parentItem = $selectedItem.parent();
-    //         $parentItem.addClass('menu-open menu-is-opening');
-    //         $parentItem.children('.nav-treeview').show();
-    //         $selectedItem.find('.right').removeClass('fa-angle-left').addClass('fa-angle-down');
-    //     } 
-    //     else if ($selectedItem.closest('.nav-treeview').length) {
-    //         $selectedItem.css(activeSubmenuStyles);
-    //         let $parentItem = $selectedItem.closest('.nav-item.has-treeview');
-    //         let $parentLink = $parentItem.children('.nav-link');
-    //         $parentItem.addClass('menu-open menu-is-opening');
-    //         $parentLink.addClass('active').css(activeStyles);
-    //         $parentItem.children('.nav-treeview').show();
-    //         $parentLink.find('.right').removeClass('fa-angle-left').addClass('fa-angle-down');
-    //     }
-
-
-    //     // Opcional: desplazarse al elemento seleccionado
-    //     $selectedItem[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    // }
-
-
-
     function selectorSidebarItem(itemId) {
-        // Estilos
-        // const inactivo = { color: '#c2c7d0' };
-        // const activo = { color: '#fff', backgroundColor: '#007bff' };
-        // const activeSubmenuStyles = { color: '#007bff', backgroundColor: 'transparent' };
 
         // Deseleccionar todos los elementos activos
         $('.sidebar-container .nav-link').removeClass('active').css(inactivo);
@@ -330,15 +374,35 @@
     function verCaracteristica(nombre){
         $.ajax({
             url: '/obtenerDatosCaracteristica',
-            data: {'nombre':nombre},
+            data: {'nombre':nombre,'token': localStorage.getItem('evaluacionToken')},
             type: 'GET',
             dataType: 'json',
             success: function(response) {
                 document.getElementById('contenidoFormulario').innerHTML = response.vista;
+                if(!(response.resultados.length === 0)){
+                    for(let resultado of response.resultados){
+                        mostrarResultadoMetrica(resultado.id_metrica, resultado.abreviatura,
+                        resultado.resultado, resultado.formula, resultado.escala,resultado.unidad)
+                    }
+                }
+                if(response.valorCaracteristica != null){
+                    debugger
+                    var metricas = [];
+                    if(response.datos.metricas.length > 0){
+                        var metricas = response.datos.metricas
+                    }
+                    else{
+                        var metricas = response.datos.sub_caracteristicas
+                    }
+                    mostrarResultadoCaracteristica(response.valorCaracteristica.id_caracteristica,
+                    response.valorCaracteristica.valor, response.valorCaracteristica.formula,metricas);
+                    crearGraficaNavegadores(['Cumple','No cumple'], [response.valorCaracteristica.valor, 100 - response.valorCaracteristica.valor]
+                    , "grafica_caracteristica_"+response.valorCaracteristica.id_caracteristica)
+                }
+
                 selectorSidebarItem(nombre);
             },
             error: function(xhr, status, error) {
-                debugger
                 $(document).Toasts('create', {
                     class: 'bg-danger',
                     title: '¡Error!',
@@ -352,6 +416,70 @@
         });
     }
 
+    function mostrarResultadoMetrica(id_metrica, abreviatura, resultado, formula, escala, unidad){
+
+        var porcentajeResultado = document.getElementById('porcentaje_'+id_metrica);
+        porcentajeResultado.innerHTML = resultado + " "
+        if(unidad == 'Porcentaje %'){
+            porcentajeResultado.innerHTML += "%"
+        }
+        else{
+            porcentajeResultado.innerHTML += unidad
+        }
+
+        var elem_formula = document.getElementById('formula_metrica_'+id_metrica);
+        elem_formula.innerHTML = formula + " = " + resultado;
+
+        // ejemploCreacionGrafica()
+        crearGraficaNavegadores(['Cumple','No cumple'], [resultado, escala[1] - resultado], "grafica_"+id_metrica)
+
+        var tab = document.getElementById('custom-tabs-one-'+abreviatura+'-tab')
+        tab.innerHTML = abreviatura + ' - Resultado';
+
+        $('#formulario-'+id_metrica).css({
+            'display': 'none'
+        });
+        $('#resultado-'+id_metrica).css({
+            'display': ''
+        });
+    }
+
+    function mostrarResultadoCaracteristica(id_caracteristica, resultado, formula, metricas){
+debugger
+        var porcentajeResultado = document.getElementById('porcentaje_caracteristica_'+id_caracteristica);
+        porcentajeResultado.innerHTML = resultado + " %"
+
+        const listaMetricas = document.getElementById('lista_metricas');
+        listaMetricas.innerHTML = '';
+
+        metricas.forEach(metrica => {
+            debugger
+            var valor = "";
+            if(typeof metrica.abreviatura !== 'undefined'){
+                valor = metrica.abreviatura
+            }
+            else{
+                valor = metrica.nombre
+            }
+            const li = document.createElement('li');
+            li.innerHTML = '<strong>'+valor+'</strong>';
+            listaMetricas.appendChild(li);
+        });
+
+        var elem_formula = document.getElementById('formula_caracteristica_'+id_caracteristica);
+        elem_formula.innerHTML = formula + " = " + resultado;
+
+        // ejemploCreacionGrafica()
+        crearGraficaNavegadores(['Cumple','No cumple'], [resultado, 100 - resultado], "grafica_caracteristica_"+id_caracteristica)
+
+        $('#resultado_caracteristica_info').css({
+            'display': 'none'
+        });
+        $('#resultado_caracteristica').css({
+            'display': ''
+        });
+    }
+
     // Evento para cerrar otros submenús al abrir uno nuevo
     $('.sidebar-container .has-treeview > .nav-link').on('click', function() {
         $('.sidebar-container .has-treeview').not($(this).parent()).removeClass('menu-open menu-is-opening');
@@ -361,5 +489,53 @@
     function analizarPagina(){
         window.location.href = '/analizarPagina';
     }
+
+    const chartInstances = {};
+
+    function crearGraficaNavegadores(labels = [], valores = [], grafica = "") {
+        const ctx = document.getElementById(grafica).getContext('2d');
+
+        // Destruir la instancia existente si la hay para esta gráfica específica
+        if (chartInstances[grafica]) {
+            chartInstances[grafica].destroy();
+        }
+
+        chartInstances[grafica] = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: valores,
+                    backgroundColor: ['#00a65a', '#f56954'],
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: false,
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                label += context.formattedValue;
+                                return label;
+                            }
+                        }
+                    }
+                },
+            }
+        });
+    }
+
+    
 </script>
 @endsection

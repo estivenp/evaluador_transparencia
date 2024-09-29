@@ -7,6 +7,7 @@ use App\Dominio\Entidad\PlataformaWeb\PlataformaWeb;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Dominio\Entidad\ResultadoMetrica\ResultadoMetrica;
+use App\Dominio\Entidad\ValorCaracteristica\ValorCaracteristica;
 
 class Evaluacion extends Model
 {
@@ -23,5 +24,10 @@ class Evaluacion extends Model
     public function resultadosMetrica(): HasMany
     {
         return $this->hasMany(ResultadoMetrica::class, 'id_evaluacion');
+    }
+
+    public function valorCaracteristica(): HasMany
+    {
+        return $this->hasMany(ValorCaracteristica::class, 'id_valor_caracteristica');
     }
 }

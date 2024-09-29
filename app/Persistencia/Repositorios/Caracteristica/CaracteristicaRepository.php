@@ -34,8 +34,41 @@ class CaracteristicaRepository implements CaracteristicaRepositoryInterface
         $evaluacion = Caracteristica::findOrFail($id);
         $evaluacion->delete();
     }
+
     public function obtenerCaracteristicaPorNombre($nombre)
     {
         return Caracteristica::where('nombre', 'like', '%' . $nombre . '%')->first();
+    }
+
+    public function obtenerCaracteristicaPrincipales()
+    {
+        return Caracteristica::whereNull('id_caracteristica_principal')->get();
+    }
+
+    public function obtenerValoresSubcaracteristicas($idCaracteristicaPrincipal,$idEvaluacion)
+    {
+        return Caracteristica::with(['valorCaracteristica' => function ($query) use ($idEvaluacion) {
+            $query->where('id_evaluacion', $idEvaluacion);
+        }])
+        ->where('id_caracteristica_principal', $idCaracteristicaPrincipal)
+        ->get()
+        ->filter(function ($caracteristica) {
+            return $caracteristica->valorCaracteristica->isNotEmpty();
+        });
+    }
+
+    public function obtenerValoresCaracteristicasPrincipales($idEvaluacion)
+    {
+        return Caracteristica::with(['valorCaracteristica' => function ($query) use ($idEvaluacion) {
+            $query->where('id_evaluacion', $idEvaluacion);
+        }])
+        ->whereNull('id_caracteristica_principal')
+        ->whereExists(function ($query) use ($idEvaluacion) {
+            $query->select(\DB::raw(1))
+                  ->from('valor_caracteristica')
+                  ->whereColumn('valor_caracteristica.id_caracteristica', 'caracteristica.id')
+                  ->where('valor_caracteristica.id_evaluacion', $idEvaluacion);
+        })
+        ->get();
     }
 }

@@ -452,34 +452,34 @@ INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
 (15, 'pregunta', 'P24', 3);
 
 INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
-(15, 'operador', '+', 3);
+(15, 'operador', '+', 4);
 
 INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
-(15, 'pregunta', 'P25', 4);
+(15, 'pregunta', 'P25', 5);
 
 INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
-(15, 'operador', '+', 5);
+(15, 'operador', '+', 6);
 
 INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
-(15, 'pregunta', 'P26', 6);
+(15, 'pregunta', 'P26', 7);
 
 INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
-(15, 'parentesis', ')', 7);
+(15, 'parentesis', ')', 8);
 
 INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
-(15, 'operador', '/', 8);
+(15, 'operador', '/', 9);
 
 INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
-(15, 'constante', '3', 9);
+(15, 'constante', '3', 10);
 
 INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
-(15, 'parentesis', ')', 10);
+(15, 'parentesis', ')', 11);
 
 INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
-(15, 'operador', '*', 11);
+(15, 'operador', '*', 12);
 
 INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
-(15, 'constante', '20', 12);
+(15, 'constante', '20', 13);
 
 -- Componentes de la fórmula para Satisfacción de consistencia visual (SCV)
 -- Fórmula: SCV = ((P27 + P28 + P29) / 3) * 20
@@ -554,16 +554,16 @@ INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
 (17, 'operador', '/', 9);
 
 INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
-(17, 'constante', '3', 12);
+(17, 'constante', '3', 10);
 
 INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
-(17, 'parentesis', ')', 13);
+(17, 'parentesis', ')', 11);
 
 INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
-(17, 'operador', '*', 14);
+(17, 'operador', '*', 12);
 
 INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
-(17, 'constante', '20', 9);
+(17, 'constante', '20', 13);
 
 -- Componentes de la fórmula para Tasa de Eficacia en notificación de actualizaciones (TENA)
 -- Fórmula: TENA = (NUCRN / NTUEN) * 100
@@ -689,7 +689,7 @@ INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
 (22, 'operador', '*', 6);
 
 INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
-(22, 'constante', '100', 6);
+(22, 'constante', '100', 7);
 
 -- Componentes de la fórmula para Satisfacción de control de acceso (SCAP)
 -- Fórmula: SCAP = ((P36 + P37 + P38) / 3) * 20

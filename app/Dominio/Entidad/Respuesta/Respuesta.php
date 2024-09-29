@@ -11,11 +11,11 @@ use App\Dominio\Entidad\OpcionRespuesta\OpcionRespuesta;
 class Respuesta extends Model
 {
     protected $table = 'respuesta';
-    protected $fillable = ['id', 'descripcion'];
+    protected $fillable = ['descripcion'];
 
-    public function pregunta(): BelongsTo
+    public function preguntas(): HasMany
     {
-        return $this->belongsTo(Pregunta::class, 'id_pregunta');
+        return $this->hasMany(Pregunta::class, 'id_respuesta');
     }
 
     public function opcionesRespuesta(): HasMany

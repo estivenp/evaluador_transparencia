@@ -37,6 +37,7 @@ class ObtenerCaracteristicaPrincipalController extends BaseController
         catch(\Throwable $ex){
             return response()->json([
                 'estado' => 'error',
+                'msg' => $ex->getMessage()
             ], 400);
         }
         

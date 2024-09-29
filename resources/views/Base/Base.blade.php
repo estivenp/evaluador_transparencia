@@ -16,9 +16,9 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- <link rel="stylesheet" href="{{ asset('css/style.css') }}"> -->
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body class="hold-transition layout-top-nav">
     <div class="wrapper">
@@ -36,14 +36,11 @@
                 <div class="collapse navbar-collapse order-3" id="navbarCollapse">
                     <!-- Left navbar links -->
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" onclick="inicio()">Inicio</a>
+                        <li class="nav-item" onclick="inicio()">
+                            <a class="nav-link" >Inicio</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Servicios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Contacto</a>
+                        <li class="nav-item" onclick="terminosUso()">
+                            <a href="#" class="nav-link" >Terminos de uso</a>
                         </li>
                     </ul>
                 </div>
@@ -57,12 +54,8 @@
         </main>
 
         <footer class="main-footer">
-            <div class="container">
-                <div class="float-right d-none d-sm-inline">
-                    <a href="#">Políticas de privacidad</a> | 
-                    <a href="#">Términos de uso</a>
-                </div>
-                <strong>Copyright &copy; 2024 DTWebEvaluator.</strong> Todos los derechos reservados.
+            <div class="container" style="text-align: center">
+                <strong>Copyright &copy; Jonathan Ibarra - Santiago Quijano 2024.</strong> Todos los derechos reservados.
             </div>
         </footer>
     </div>
@@ -79,6 +72,11 @@
     function inicio(){
         window.location.href = '/';
     }
+
+    function terminosUso(){
+        window.location.href = '/terminosUso';
+    }
+    
     </script>
     @yield('scripts')
 </body>

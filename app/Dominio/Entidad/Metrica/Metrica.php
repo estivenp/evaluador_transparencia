@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Dominio\Entidad\Caracteristica\Caracteristica;
 use App\Dominio\Entidad\ComponenteFormula\ComponenteFormula;
 use App\Dominio\Entidad\Pregunta\Pregunta;
+use App\Dominio\Entidad\Variable\Variable;
 use App\Dominio\Entidad\ResultadoMetrica\ResultadoMetrica;
 
 class Metrica extends Model
@@ -26,11 +27,6 @@ class Metrica extends Model
     public function componentesFormula(): HasMany
     {
         return $this->hasMany(ComponenteFormula::class, 'id_metrica');
-    }
-
-    public function preguntas(): HasMany
-    {
-        return $this->hasMany(Pregunta::class, 'id_componente_formula');
     }
 
     public function resultados(): HasMany

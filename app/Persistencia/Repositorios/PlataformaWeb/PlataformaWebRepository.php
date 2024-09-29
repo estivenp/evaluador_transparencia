@@ -39,6 +39,6 @@ class PlataformaWebRepository implements PlataformaWebRepositoryInterface
     public function obtenerPlataformaPorNombreYUrl( string $nombre,string $url){
         return PlataformaWeb::where('nombre', $nombre)
                             ->where('url', $url)
-                            ->get();
+                            ->first();
     }
 }

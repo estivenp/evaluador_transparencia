@@ -70,7 +70,7 @@ VALUES (
     'Compatibilidad con diferentes dispositivos',
     'CDD',
     'Esta métrica tiene como objetivo evaluar el índice de compatibilidad de una plataforma web en la gestión y el acceso de datos personales desde diversos tipos de dispositivos, incluyendo computadores de escritorio, laptops y dispositivos móviles.',
-    'Entera positiva',
+    'Compatibilidad',
     '[1, 3]',
     'Puntuación de compatibilidad: 1 punto - El dispositivo permite acceder a la plataforma, pero no gestionar datos personales. 2 puntos - El dispositivo permite acceder a la plataforma y gestionar datos personales de manera limitada. 3 puntos - El dispositivo permite acceder a la plataforma y gestionar datos personales de manera completa.',
     'Supongamos que se evaluaron 4 tipos de dispositivos con los siguientes resultados: Computadora de escritorio: 3 puntos, Laptop: 3 puntos, Tablet: 2 puntos, Smartphone: 2 puntos. CDD = (3 + 3 + 2 + 2) / 4 = 2.5. Este resultado indica una alta compatibilidad entre los diferentes dispositivos y la plataforma web, cumpliendo con el objetivo planteado.'

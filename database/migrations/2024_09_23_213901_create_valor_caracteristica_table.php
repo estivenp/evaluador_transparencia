@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('resultado_metrica', function (Blueprint $table) {
+        Schema::create('valor_caracteristica', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_metrica')->constrained('metrica');
             $table->foreignId('id_evaluacion')->constrained('evaluacion');
-            $table->float('resultado');
+            $table->foreignId('id_caracteristica')->constrained('caracteristica');
+            $table->float('valor');
             $table->string('formula');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('resultado_metrica');
+        Schema::dropIfExists('valor_caracteristica');
     }
 };

@@ -35,6 +35,12 @@ class EvaluacionRepository implements EvaluacionRepositoryInterface
         $evaluacion->delete();
     }
 
+    public function validarToken($token){
+        return Evaluacion::where('token', $token)
+                ->where('token_expira_en', '>', now())
+                ->first();
+    }
+
     public function getAllWithPlataforma()
     {
         return Evaluacion::with('plataformaWeb')->get();
