@@ -3,15 +3,15 @@ DTWebEvaluator es un prototipo de aplicación web diseñado para evaluar la tran
 
 ## Tecnologías utilizadas
 
-Laravel 11
-PHP 8
-MySQL 8
+- Laravel 11
+- PHP 8
+- MySQL 8
 
 ## Requisitos mínimos
 
-PHP 8
-MySQL 8
-Composer
+- PHP 8
+- MySQL 8
+- Composer
 
 ## Instalación
 
@@ -20,16 +20,13 @@ Composer
 3. Crea una base de datos en MySQL
 4. Carga los archivos SQL en el siguiente orden, los archivos sql se encuentran en la carpeta sql ubicada en la raiz del proyecto:
 
-- sql1_caracteristicas.sql
-- sql2_metricas.sql
-- sql3_componente_formula.sql
-- sql4_variable.sql
-- sql5_respuesta.sql
-- sql6_preguntas.sql
-- sql7_opcion_respuesta.sql
-
-
-
+  - sql1_caracteristicas.sql
+  - sql2_metricas.sql
+  - sql3_componente_formula.sql
+  - sql4_variable.sql
+  - sql5_respuesta.sql
+  - sql6_preguntas.sql
+  - sql7_opcion_respuesta.sql
 
 ## Iniciar la aplicación
 Puedes utilizar el servidor Artisan de Laravel ejecutando php artisan serve en la raíz del proyecto, o configurar otro servidor de tu preferencia.
