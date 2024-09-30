@@ -27,6 +27,17 @@ class AgregarPaginaWebController extends BaseController
         $this->evaluacionRepository = $evaluacionRepository;
     }
 
+    /**
+     * Controlador que recibe la peticion para guardar la informacion de la plataforma he iniciar una evaluacion
+     *
+     * @param $request: informacion de la peticion
+     * [nombre]: nombre de la plataforma
+     * [url]: url de la plataforma
+     *
+     * @return Response $response: respuesta de la peticion
+     *
+     * @throws \Throwable $ex captura cualquier error inesperado que ocurra en la ejecucion
+     */
     public function agregar(Request $request)
     {
         try{

@@ -33,6 +33,18 @@ class CalcularValorCaracteristicaService implements CalcularValorCaracteristicaI
         $this->resultadoMetricaRepository = $resultadoMetricaRepository;
     }
 
+    /**
+     * Funcion para calcular el valor de una caracteristica
+     *
+     * @param $caracteristica: informacion de la caracteristica
+     * @param $evaluacion: informacion de la evaluacion
+     * @param $tipo: tipo de calculo: subcaracteristica, caracteristica, transparencia
+     *
+     * @return $respuesta: contiene la respuesta de la funcion
+     * [valor]: resultado del calculo de la caracteristica
+     * [formula]: formula utilizada para el calculo de la caracteristica
+     * [siguiente_calculo]: el siguiente nivel a evaluar: caracteristica, transparencia
+     */
     public function calcular($caracteristica, $evaluacion, $tipo)
     {
         $resultadosMetrica = $this->resultadoMetricaRepository->obtenerResultadosMetricaPorEvaluacionYCaracteristica(
@@ -58,6 +70,14 @@ class CalcularValorCaracteristicaService implements CalcularValorCaracteristicaI
         return $respuesta;
     }
 
+    /**
+     * Funcion para calcular el valor de una caracteristica
+     *
+     * @param $idCaracteristica: id de la caracteristica
+     * @param $idEvaluacion: id de la evaluacion
+     *
+     * @return $respuesta: el valor o resultado del calculo de la caracteristica
+     */
     protected function calcularCaracteristica($idCaracteristica, $idEvaluacion){
         $valorSubcaracteristicas = $this->caracteristicaRepository->obtenerValoresSubcaracteristicas($idCaracteristica,$idEvaluacion);
         foreach ($valorSubcaracteristicas as $subcaracteristica) {
@@ -85,6 +105,16 @@ class CalcularValorCaracteristicaService implements CalcularValorCaracteristicaI
         }
         return $resultado;
     }
+
+    /**
+     * Funcion para calcular el valor de una subcaracteristica
+     *
+     * @param $idCaracteristica: id de la caracteristica
+     * @param $idEvaluacion: id de la evaluacion
+     * @param $resultadosMetricas: lista de la informacion de los resultados de las metricas de la subcaracteristica
+     *
+     * @return $respuesta: el valor o resultado del calculo de la subcaracteristica
+     */
     protected function calcularSubcaracteristica($idCaracteristica, $idEvaluacion, $resultadosMetrica){
         foreach($resultadosMetrica as $resultadoMetrica){
             $resultado = $resultadoMetrica->resultado;
@@ -124,6 +154,14 @@ class CalcularValorCaracteristicaService implements CalcularValorCaracteristicaI
         }
         return $resultado;
     }
+
+    /**
+     * Funcion para calcular el valor de la transparencia en la gestion de los datos del usuario
+     *
+     * @param $idEvaluacion: id de la evaluacion
+     *
+     * @return $respuesta: el valor o resultado del calculo de la transparencia
+     */
     protected function calcularTransparencia($idEvaluacion){
         $valorCaracteristicasPrincipales = $this->caracteristicaRepository->obtenerValoresCaracteristicasPrincipales($idEvaluacion);
 

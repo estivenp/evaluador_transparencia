@@ -6,6 +6,16 @@ use App\Dominio\Interfaces\Metrica\CalcularMetricaInterface;
 
 class CalcularMetricaService implements CalcularMetricaInterface
 {
+    /**
+     * Funcion para calcular el valor de una metrica
+     *
+     * @param $metrica: informacion de la metrica a calcular
+     * @param $valores: valores digitados para el calculo de la metrica;
+     *
+     * @return $respuesta: contiene la respuesta de la funcion
+     * [resultado]: Resultado del calculo de la metrica
+     * [formula]: formula utilizada para el calculo de la metrica
+     */
     public function calcular($metrica, $valores)
     {
         $componentes = $metrica->componentesFormula()->orderBy('orden')->get();
@@ -16,6 +26,15 @@ class CalcularMetricaService implements CalcularMetricaInterface
         return $respuesta;
     }
 
+    /**
+     * Funcion que construye la formula a utilizar
+     *
+     * @param $componentes: lista de los componentes de la formula
+     * @param $valores: valores digitados para el calculo de la metrica;
+     * @param $metrica: informacion de la metrica
+     *
+     * @return $formula: formula utilizada para el calculo de la metrica
+     */
     protected function reconstruirFormula($componentes,$valores,$metrica)
     {
         $formula = '';
@@ -52,6 +71,13 @@ class CalcularMetricaService implements CalcularMetricaInterface
         return $formula;
     }
 
+    /**
+     * Funcion para evaluar la metrica y obtener el resultado
+     *
+     * @param $formula: formula utilizada para el calculo de la metrica
+     *
+     * @return double resultado de la metrica
+     */
     protected function evaluarFormula($formula)
     {
         $result = 0;

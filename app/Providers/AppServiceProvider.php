@@ -8,8 +8,6 @@ use App\Persistencia\Repositorios\Evaluacion\EvaluacionRepository;
 use App\Dominio\Interfaces\PlataformaWeb\PlataformaWebRepositoryInterface;
 use App\Persistencia\Repositorios\PlataformaWeb\PlataformaWebRepository;
 use App\Dominio\Interfaces\Caracteristica\CaracteristicaRepositoryInterface;
-use App\Dominio\Interfaces\Caracteristica\ObtenerDatosCaracteristicaInterface;
-use App\Aplicacion\Servicios\Caracteristica\ObtenerDatosCaracteristicaService;
 use App\Persistencia\Repositorios\Caracteristica\CaracteristicaRepository;
 use App\Aplicacion\Servicios\Metrica\CalcularMetricaService;
 use App\Dominio\Interfaces\Metrica\CalcularMetricaInterface;
@@ -35,7 +33,6 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         //Servicios
-        $this->app->bind(ObtenerDatosCaracteristicaInterface::class, ObtenerDatosCaracteristicaService::class);
         $this->app->bind(CalcularMetricaInterface::class, CalcularMetricaService::class);
         $this->app->bind(CalcularValorCaracteristicaInterface::class, CalcularValorCaracteristicaService::class);
         $this->app->bind(GenerarCsvInterface::class, GenerarCsv::class);

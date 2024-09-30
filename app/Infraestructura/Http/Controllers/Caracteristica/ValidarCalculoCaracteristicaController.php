@@ -29,6 +29,18 @@ class ValidarCalculoCaracteristicaController extends BaseController
         $this->valorCaracteristicaRepository = $valorCaracteristicaRepository;
     }
 
+    /**
+     * Controlador que recibe la peticion para validar si se debe realizar el calculo de la caracteristica
+     *
+     * @param $request: informacion de la peticion
+     * [id_caracteristica]: id de la caracteristica a validar
+     * [token]: token de la evaluacion
+     * [tipo]: tipo de caracteristica a validar: subcaracteristica, caracteristica, transparencia
+     *
+     * @return Response $response: respuesta de la peticion
+     *
+     * @throws \Throwable $ex captura cualquier error inesperado que ocurra en la ejecucion
+     */
     public function validar(Request $request)
     {
         try{

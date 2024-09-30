@@ -30,6 +30,18 @@ class CalcularMetricaController extends BaseController
         $this->resultadoMetricaRepository = $resultadoMetricaRepository;
     }
 
+    /**
+     * Controlador que recibe la peticion para calcular el valor de una metrica
+     *
+     * @param $request: informacion de la peticion
+     * [id_metrica]: id de la metrica a realizar el calculo
+     * [datos]: valores de las variables para realizar el calculo de la metrica
+     * [token]: token de la evaluacion
+     *
+     * @return Response $response: respuesta de la peticion
+     *
+     * @throws \Throwable $ex captura cualquier error inesperado que ocurra en la ejecucion
+     */
     public function calcular(Request $request)
     {
         try{

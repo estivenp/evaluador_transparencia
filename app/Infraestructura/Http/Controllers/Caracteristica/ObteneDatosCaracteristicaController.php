@@ -4,7 +4,6 @@ namespace App\Infraestructura\Http\Controllers\Caracteristica;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
-use App\Dominio\Interfaces\Caracteristica\ObtenerDatosCaracteristicaInterface;
 use Illuminate\Support\Facades\View;
 use App\Dominio\Interfaces\Caracteristica\CaracteristicaRepositoryInterface;
 use App\Dominio\Interfaces\Evaluacion\EvaluacionRepositoryInterface;
@@ -14,25 +13,34 @@ use App\Dominio\Interfaces\ValorCaracteristica\ValorCaracteristicaRepositoryInte
 
 class ObteneDatosCaracteristicaController extends BaseController
 {
-    private $obtenerDatosCaracteristicaServ;
     private $evaluacionRepository;
     private $resultadoMetricaRepository;
     private $valorCaracteristicaRepository;
 
-    public function __construct(ObtenerDatosCaracteristicaInterface $obtenerDatosCaracteristicaServ, 
+    public function __construct(
         CaracteristicaRepositoryInterface $caracteristicaRepository,
         EvaluacionRepositoryInterface $evaluacionRepository,
         ResultadoMetricaRepositoryInterface $resultadoMetricaRepository,
         ValorCaracteristicaRepositoryInterface $valorCaracteristicaRepository
         )
     {
-        $this->obtenerDatosCaracteristicaServ = $obtenerDatosCaracteristicaServ;
         $this->caracteristicaRepository = $caracteristicaRepository;
         $this->evaluacionRepository = $evaluacionRepository;
         $this->resultadoMetricaRepository = $resultadoMetricaRepository;
         $this->valorCaracteristicaRepository = $valorCaracteristicaRepository;
     }
 
+    /**
+     * Controlador que recibe la peticion para obtener los datos de las caracteristicas
+     *
+     * @param $request: informacion de la peticion
+     * [nombre]: nombre de la caracteristica a renderizar
+     * [token]: token de la evaluacion
+     *
+     * @return Response $response: respuesta de la peticion
+     *
+     * @throws \Throwable $ex captura cualquier error inesperado que ocurra en la ejecucion
+     */
     public function obtenerDatos(Request $request)
     {
         try{

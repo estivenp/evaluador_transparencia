@@ -20,6 +20,16 @@ class GenerarReporteController extends BaseController
         $this->generarCsv = $generarCsv;
     }
 
+    /**
+     * Controlador que recibe la peticion de generar el reporte en cvs de la evaluacion de la plataforma
+     *
+     * @param $request: informacion de la peticion
+     * [token]: token de la evaluacion
+     *
+     * @return Response $response: respuesta de la peticion
+     *
+     * @throws \Throwable $ex captura cualquier error inesperado que ocurra en la ejecucion
+     */
     public function generar(Request $request)
     {
         try{

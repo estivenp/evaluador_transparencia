@@ -49,6 +49,10 @@ function mostrarTransparencia(){
     const transparencia = document.getElementById('transparencia');
     transparencia.style.display = '';
 }
+function ocultarTransparencia(){
+    const transparencia = document.getElementById('transparencia');
+    transparencia.style.display = 'none';
+}
 
 function generarReporte(){
     $.ajax({
@@ -68,13 +72,11 @@ function generarReporte(){
             console.log('Fecha del informe:', fecha);
             console.log('Plataforma:', plataforma);
 
-            // Crear y descargar el archivo CSV
             var blob = new Blob([data], {type: 'text/csv'});
             var downloadUrl = URL.createObjectURL(blob);
             var a = document.createElement("a");
             a.href = downloadUrl;
             a.download = "informe_transparencia_"+plataforma+"_"+fecha+".csv";
-            // a.download = "informe_transparencia.csv";
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -128,9 +130,9 @@ $(document).ready(function() {
                     $('#url').val(response.plataforma_url)
                 }
                 else{
-                    ocultarCaracteristicas();
                     localStorage.removeItem('evaluacionToken')
                     localStorage.removeItem('transparencia')
+                    ocultarCaracteristicas();
                 }
             },
             error: function(xhr, status, error) {
@@ -174,23 +176,19 @@ $(document).ready(function() {
 
 function selectorSidebarItem(itemId) {
 
-    // Deseleccionar todos los elementos activos
     $('.sidebar-container .nav-link').removeClass('active').css(inactivo);
     $('.sidebar-container .nav-item').removeClass('menu-open menu-is-opening');
     $('.sidebar-container .nav-treeview').hide();
 
-    // Encontrar el elemento seleccionado
     let $selectedItem = $('.sidebar-container .nav-link').filter(function() {
         return $(this).text().trim().toLowerCase() === itemId.toLowerCase();
     });
 
     if ($selectedItem.length === 0) {
-        // Si no se encuentra, buscar por ID (para características principales)
         $selectedItem = $('#' + itemId);
     }
 
     if ($selectedItem.length) {
-        // Activar el elemento seleccionado
         $selectedItem.addClass('active').css(activo);
 
         if ($selectedItem.closest('.nav-treeview').length) {
@@ -210,7 +208,6 @@ function selectorSidebarItem(itemId) {
             $selectedItem.find('.right').removeClass('fa-angle-left').addClass('fa-angle-down');
         }
 
-        // Desplazarse al elemento seleccionado
         $selectedItem[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 }
@@ -287,7 +284,6 @@ function mostrarResultadoMetrica(id_metrica, abreviatura, resultado, formula, es
     var elem_formula = document.getElementById('formula_metrica_'+id_metrica);
     elem_formula.innerHTML = formula + " = " + resultado;
 
-    // ejemploCreacionGrafica()
     crearGraficaNavegadores(['Cumple','No cumple'], [resultado, escala[1] - resultado], "grafica_"+id_metrica)
 
     var tab = document.getElementById('custom-tabs-one-'+abreviatura+'-tab')
@@ -324,7 +320,6 @@ function mostrarResultadoCaracteristica(id_caracteristica, resultado, formula, m
     var elem_formula = document.getElementById('formula_caracteristica_'+id_caracteristica);
     elem_formula.innerHTML = formula + " = " + resultado;
 
-    // ejemploCreacionGrafica()
     crearGraficaNavegadores(['Cumple','No cumple'], [resultado, 100 - resultado], "grafica_caracteristica_"+id_caracteristica)
 
     $('#resultado_caracteristica_info').css({
@@ -335,7 +330,6 @@ function mostrarResultadoCaracteristica(id_caracteristica, resultado, formula, m
     });
 }
 
-// Evento para cerrar otros submenús al abrir uno nuevo
 $('.sidebar-container .has-treeview > .nav-link').on('click', function() {
     $('.sidebar-container .has-treeview').not($(this).parent()).removeClass('menu-open menu-is-opening');
     $('.sidebar-container .has-treeview').not($(this).parent()).children('.nav-treeview').hide();
@@ -350,7 +344,6 @@ const chartInstances = {};
 function crearGraficaNavegadores(labels = [], valores = [], grafica = "") {
     const ctx = document.getElementById(grafica).getContext('2d');
 
-    // Destruir la instancia existente si la hay para esta gráfica específica
     if (chartInstances[grafica]) {
         chartInstances[grafica].destroy();
     }
@@ -429,6 +422,8 @@ $(document).ready(function() {
                     });
                     mostrarCaracteristicas()
                     localStorage.setItem('evaluacionToken', response.token)
+                    localStorage.removeItem('transparencia', response.token)
+                    ocultarTransparencia()
                     verCaracteristica('disponibilidad')
                 }
                 else{
@@ -460,42 +455,33 @@ $(document).ready(function() {
 });
 
 function agregarElemento(id_metrica){
-    // Preguntar por el nombre del elemento
     let nombreElemento = prompt("Por favor, ingrese el nombre del elemento a agregar:");
     
-    // Verificar si el usuario canceló o ingresó un nombre vacío
     if (!nombreElemento) {
         alert("No se ingresó un nombre válido. No se agregará ningún elemento.");
         return;
     }
     
-    // Crear el ID reemplazando espacios por guiones bajos
     let elementoId = nombreElemento.replace(/\s+/g, '_').toLowerCase();
     
-    // Obtener el formulario
     const formulario = document.getElementById('calcular_metrica_'+id_metrica);
     
-    // Crear el nuevo div para el grupo de formulario
     const nuevoDiv = document.createElement('div');
     nuevoDiv.className = 'form-group';
     
-    // Crear la etiqueta
     const label = document.createElement('label');
     label.htmlFor = elementoId;
     label.textContent = nombreElemento;
     
-    // Crear el input
     const input = document.createElement('input');
     input.type = 'number';
     input.id = elementoId;
     input.name = elementoId;
     input.className = 'form-control';
     
-    // Agregar la etiqueta y el input al nuevo div
     nuevoDiv.appendChild(label);
     nuevoDiv.appendChild(input);
     
-    // Agregar el nuevo div al formulario
     formulario.insertBefore(nuevoDiv, formulario.firstChild);
 }
 
@@ -515,7 +501,6 @@ function calcularMetrica(id_metrica){
                 }
             }
         }
-        var token = localStorage.getItem('evaluacionToken')
 
         $.ajax({
             url: '/calcularMetrica',

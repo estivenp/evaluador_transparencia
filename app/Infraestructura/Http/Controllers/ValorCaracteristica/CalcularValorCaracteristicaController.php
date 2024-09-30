@@ -33,6 +33,18 @@ class CalcularValorCaracteristicaController extends BaseController
         $this->resultadoMetricaRepository = $resultadoMetricaRepository;
     }
 
+    /**
+     * Controlador que recibe la peticion para calcular el valor de una caracteristica
+     *
+     * @param $request: informacion de la peticion
+     * [id_caracteristica]: id de la caracteristica a realizar el calculo
+     * [tipo]: el tipo de caracteristica a evaluar: subcaracteristica, caracteristica, transparencia
+     * [token]: token de la evaluacion
+     *
+     * @return Response $response: respuesta de la peticion
+     *
+     * @throws \Throwable $ex captura cualquier error inesperado que ocurra en la ejecucion
+     */
     public function calcular(Request $request)
     {
         try{

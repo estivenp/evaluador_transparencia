@@ -18,6 +18,16 @@ class ValidarTokenController extends BaseController
         $this->evaluacionRepository = $evaluacionRepository;
     }
 
+    /**
+     * Controlador que recibe la peticion para validar si hay una evaluacion pendiente
+     *
+     * @param $request: informacion de la peticion
+     * [token]: token de la evaluacion
+     *
+     * @return Response $response: respuesta de la peticion
+     *
+     * @throws \Throwable $ex captura cualquier error inesperado que ocurra en la ejecucion
+     */
     public function verificar(Request $request)
     {
         try{
