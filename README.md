@@ -30,15 +30,17 @@ DTWebEvaluator es un prototipo de aplicación web diseñado para evaluar la tran
 
 ## Iniciar la aplicación
 Puedes utilizar el servidor Artisan de Laravel ejecutando php artisan serve en la raíz del proyecto, o configurar otro servidor de tu preferencia.
-Características
 
-Evaluación cuantitativa de la transparencia en la gestión de datos de plataformas web
-Resultados gráficos y visuales
-Opción de descargar un reporte en formato CSV
+## Características
+
+- Evaluación cuantitativa de la transparencia en la gestión de datos de plataformas web
+- Resultados gráficos y visuales
+- Opción de descargar un reporte en formato CSV
 
 ## Uso
 El uso de DTWebEvaluator es gratuito y no requiere registro ni inicio de sesión.
-Notas importantes
+
+## Notas importantes
 
 Esta es una versión prototipo y no debe considerarse como una versión final o completa.
 Los resultados proporcionados son solo para fines informativos y de investigación.
@@ -52,7 +54,7 @@ AdminLTE 3: Plantilla de administración basada en Bootstrap para una interfaz d
 
 ## Licencia
 DTWebEvaluator es una aplicación de código abierto (open source) desarrollada para fines de investigación académica.
-Autores
 
+## Autores
 - Jonathan Ibarra
 - Santiago Quijano
