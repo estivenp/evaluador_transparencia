@@ -35,11 +35,15 @@ class CalcularMetricaService implements CalcularMetricaInterface
                         $formula .= $valores[$componente->valor] ?? 0;
                         break;
                     case 'constante':
-                        $formula .= $componente->valor;
-                        break;
                     case 'operador':
                     case 'parentesis':
                         $formula .= $componente->valor;
+                        break;
+                    case 'absoluto_apertura':
+                        $formula .= "abs(";
+                        break;
+                    case 'absoluto_cierre':
+                        $formula .= ")";
                         break;
                 }
             }

@@ -34,35 +34,30 @@ class ValidarCalculoCaracteristicaController extends BaseController
         try{
             $id_caracteristica = $request->input('id_caracteristica');
             $token = $request->input('token');
-            $cambio_metrica =$request->input('cambio_metrica');
+            $tipo =$request->input('tipo');
 
             $respuesta = [];
             $respuesta['calcular'] = false;
-
             $caracteristica = $this->caracteristicaRepository->find($id_caracteristica);
             $evaluacion = $this->evaluacionRepository->validarToken($token);
-            $valorCaracteristica = $this->valorCaracteristicaRepository->obtenerValorCaracteristicaPorEvaluacionYCaracteristica(
-                $caracteristica->id, $evaluacion->id);
-            if($cambio_metrica == 'true' || is_null($valorCaracteristica)){
-                $metricas = $caracteristica->metricas;
-                $resultadosMetrica = $this->resultadoMetricaRepository->obtenerResultadosMetricaPorEvaluacionYCaracteristica(
-                    $evaluacion->id,$caracteristica->id);
-                if(count($metricas) == count($resultadosMetrica)){
-                    $respuesta['id_caracteristica'] = $caracteristica->id;
-                    $respuesta['tipo'] = "subcaracteristica";
-                    $respuesta['calcular'] = true;
-                }
-            }
-            else{
-                if(is_null($caracteristica->id_caracteristica_principal)){
-                    $caracteristicaPadre = $caracteristica;
-                }
-                else{
-                    $caracteristicaPadre = $caracteristica->caracteristicaPrincipal;
-                }
-                $valorCaracteristicaPadre = $this->valorCaracteristicaRepository->obtenerValorCaracteristicaPorEvaluacionYCaracteristica(
-                    $caracteristicaPadre->id, $evaluacion->id);
-                if(is_null($valorCaracteristicaPadre)){
+            switch($tipo){
+                case 'subcaracteristica':
+                    $metricas = $caracteristica->metricas;
+                    $resultadosMetrica = $this->resultadoMetricaRepository->obtenerResultadosMetricaPorEvaluacionYCaracteristica(
+                        $evaluacion->id,$caracteristica->id);
+                    if(count($metricas) == count($resultadosMetrica)){
+                        $respuesta['id_caracteristica'] = $caracteristica->id;
+                        $respuesta['tipo'] = "subcaracteristica";
+                        $respuesta['calcular'] = true;
+                    }
+                    break;
+                case 'caracteristica':
+                    if(is_null($caracteristica->id_caracteristica_principal)){
+                        $caracteristicaPadre = $caracteristica;
+                    }
+                    else{
+                        $caracteristicaPadre = $caracteristica->caracteristicaPrincipal;
+                    }
                     $subcaracteristicas = $caracteristicaPadre->subCaracteristicas;
                     $valorSubcaracteristicas = $this->caracteristicaRepository->obtenerValoresSubcaracteristicas($caracteristicaPadre->id, $evaluacion->id);
                     if(count($subcaracteristicas) == count($valorSubcaracteristicas)){
@@ -70,18 +65,22 @@ class ValidarCalculoCaracteristicaController extends BaseController
                         $respuesta['tipo'] = "caracteristica";
                         $respuesta['calcular'] = true;
                     }
-                }
-                else{
+                    break;
+                case 'transparencia':
                     $caracteristicasPrincipales = $this->caracteristicaRepository->obtenerCaracteristicaPrincipales();
                     $valorCaracteristicasPrincipales = $this->caracteristicaRepository->obtenerValoresCaracteristicasPrincipales($evaluacion->id);
-                    if(is_null($evaluacion->resultado_final) && count($caracteristicasPrincipales) == count($valorCaracteristicasPrincipales)){
+                    if(count($caracteristicasPrincipales) == count($valorCaracteristicasPrincipales)){
                         $respuesta['id_caracteristica'] = $caracteristica->id;
                         $respuesta['tipo'] = "transparencia";
                         $respuesta['calcular'] = true;
                     }
-                }
+                    break;
+                default:
+                    $respuesta['id_caracteristica'] = $caracteristica->id;
+                    $respuesta['tipo'] = "";
+                    $respuesta['tipo_siguiente'] = "";
+                    $respuesta['calcular'] = false;
             }
-
             return response()->json([
                 'estado' => 'exito',
                 'resultado' => $respuesta

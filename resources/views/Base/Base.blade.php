@@ -67,17 +67,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/js/adminlte.min.js"></script>
-    @stack('scripts')
-    <script>
-    function inicio(){
-        window.location.href = '/';
-    }
-
-    function terminosUso(){
-        window.location.href = '/terminosUso';
-    }
-    
-    </script>
-    @yield('scripts')
+    <script src="{{ asset('js/script.js') }}"></script>
 </body>
 </html>

@@ -231,17 +231,17 @@ VALUES (
     'Supongamos que lo siguientes datos: 100 usuarios notificados, 87 confirmaron recibido y entendido las actualizaciones: TENA = (87 / 100) * 100 = 87%. Este resultado indica una buena eficiencia en la notificación de actualizaciones en la gestión de datos, cumpliendo el valor objetivo.'
 );
 
--- Longitud media de frases (LMF)
+-- Índice de Calidad de Longitud de Frase (ICLF)
 INSERT INTO metrica (id_caracteristica, nombre, abreviatura, descripcion, unidad, escala, observaciones, ejemplo_utilizacion)
 VALUES (
     13,
-    'Longitud media de frases',
-    'LMF',
-    'Esta métrica está diseñada para cuantificar la longitud media utilizadas por una plataforma web, en relación a las frases utilizadas para presentar la información a los usuarios durante su interacción.',
-    'Palabras por frase',
+    'Indice de Calidad de Longitud de Frase',
+    'ICLF',
+    'El Índice de Calidad de Longitud de Frase (ICLF) es una métrica diseñada para evaluar la idoneidad de la longitud media de las frases utilizadas en una plataforma web. Mide cuán cerca está la longitud promedio de las frases del valor óptimo de 18 palabras, considerando que frases entre 15 y 20 palabras son ideales para la comprensión del usuario. El índice se expresa como un porcentaje, donde 100% representa la longitud óptima, y disminuye a medida que la longitud promedio se aleja de este valor ideal.',
+    'Porcentaje %',
     '[0, 100]',
-    'Valor objetivo: Entre 15 y 20 palabras por frase. NTP: Número total de palabras. NT: Número total de oraciones.',
-    'Supongamos que lo siguientes datos: En un texto con 500 palabras y 30 frases. LMF = 500 / 30 = 16.67 palabras por frase. Este resultado indica una buena eficiencia en la notificación de actualizaciones, cumpliendo el valor objetivo.'
+    'Valor objetivo: Entre 15 y 20 palabras por frase. Se toma como valor ideal 18 palabras por frase. Se utiliza un valor de ajuste de 5 en la formula, lo que indica que cada palabra que se desvia del valor ideal resta un 5% al indice de calidad. NTP: Número total de palabras. NT: Número total de oraciones.',
+    'Supongamos que lo siguientes datos: En un texto con 500 palabras y 30 frases. ICLF = 100 - min(100,(5 × | (500/30) - 18|)) = 93% . Este resultado indica un buen indice de calidad en la longitud de las frases.'
 );
 
 -- Índice de simplicidad léxica (ISL)

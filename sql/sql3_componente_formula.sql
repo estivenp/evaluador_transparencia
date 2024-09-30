@@ -589,17 +589,68 @@ INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
 INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
 (18, 'constante', '100', 7);
 
--- Componentes de la fórmula para Longitud media de frases (LMF)
--- Fórmula: LMF = NTP / NT
+-- Componentes de la fórmula Índice de Calidad de Longitud de Frase (ICLF)
+-- Fórmula: ICLF = 100 - min(100,(5 * |(NTP / NT) - 18 |))
 
 INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
-(19, 'variable', 'NTP', 1);
+(19, 'constante', '100', 1);
 
 INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
-(19, 'operador', '/', 2);
+(19, 'operador', '-', 2);
 
 INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
-(19, 'variable', 'NT', 3);
+(19, 'operador', 'min', 3);
+
+INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
+(19, 'parentesis', '(', 4);
+
+INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
+(19, 'constante', '100', 5);
+
+INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
+(19, 'operador', ',', 6);
+
+INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
+(19, 'parentesis', '(', 7);
+
+INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
+(19, 'constante', '5', 8);
+
+INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
+(19, 'operador', '*', 9);
+
+INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
+(19, 'absoluto_apertura', '|', 10);
+
+INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
+(19, 'parentesis', '(', 11);
+
+INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
+(19, 'variable', 'NTP', 12);
+
+INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
+(19, 'operador', '/', 13);
+
+INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
+(19, 'variable', 'NT', 14);
+
+INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
+(19, 'parentesis', ')', 15);
+
+INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
+(19, 'operador', '-', 16);
+
+INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
+(19, 'constante', '18', 17);
+
+INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
+(19, 'absoluto_cierre', '|', 18);
+
+INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
+(19, 'parentesis', ')', 19);
+
+INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
+(19, 'parentesis', ')', 20);
 
 -- Componentes de la fórmula para Índice de simplicidad léxica (ISL)
 -- Fórmula: ISL = (NPC / NTP) * 100
@@ -626,9 +677,9 @@ INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
 (20, 'constante', '100', 7);
 
 -- Componentes de la fórmula para Exhaustividad de la información (EI)
--- Fórmula: PEI = ((P33 + P34 + P35) / 3) * 20
+-- Fórmula: EI = ((P33 + P34 + P35) / 3) * 20
 
-INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
+INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES 
 (21, 'parentesis', '(', 1);
 
 INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
@@ -824,7 +875,7 @@ INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
 (26, 'constante', '10', 7);
 
 -- Componentes de la fórmula para Satisfacción del usuario con la verificación (SUV)
--- Fórmula: PSUV = (P46 + P49 + P50 + P51) * 5
+-- Fórmula: SUV = (P46 + P49 + P50 + P51) * 5
 
 INSERT INTO componente_formula (id_metrica, tipo, valor, orden) VALUES
 (27, 'parentesis', '(', 1);

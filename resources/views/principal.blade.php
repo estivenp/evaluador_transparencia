@@ -34,10 +34,3 @@
     </div>
 </div>
 @endsection
-@section('scripts')
-<script>
-function analizarPagina(){
-    window.location.href = '/analizarPagina';
-}
-</script>
-@endsection

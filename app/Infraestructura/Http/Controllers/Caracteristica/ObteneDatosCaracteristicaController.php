@@ -78,12 +78,12 @@ class ObteneDatosCaracteristicaController extends BaseController
                     }
                 }
             }
-            $vistaDisponibilidad = View::make('caracteristicaPrincipal', ['caracteristica'=>$caracteristica,
+            $vistaDisponibilidad = View::make('caracteristica', ['caracteristica'=>$caracteristica,
                 'metricas'=>$metricas, 'resultados'=>$resultados,
                 'valorCaracteristica'=>$valorCaracteristica,'valores'=>$valoresCar])->render();
 
             return response()->json([
-                'estado' => 'success',
+                'estado' => 'exito',
                 'datos' => $caracteristica,
                 'vista' => $vistaDisponibilidad,
                 'resultados' => $resultados,

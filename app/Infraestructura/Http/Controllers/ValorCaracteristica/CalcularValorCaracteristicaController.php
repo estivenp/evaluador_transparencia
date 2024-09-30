@@ -44,13 +44,20 @@ class CalcularValorCaracteristicaController extends BaseController
             $evaluacion = $this->evaluacionRepository->validarToken($token);
             $resultado = $this->calcularValorCaracteristica->calcular($caracteristica,$evaluacion,$tipo);
             $resultadosAsociados = $this->resultadoMetricaRepository->obtenerResultadosMetricaPorEvaluacionYCaracteristica($evaluacion->id, $caracteristica->id);
+            $nombre = "";
+            if($tipo != 'transparencia'){
+                $nombre = $caracteristica->nombre;
+
+            }
             return response()->json([
                 'estado' => 'exito',
                 'id_caracteristica' => $caracteristica->id,
                 'resultado' => $resultado['valor'],
                 'formula' => $resultado['formula'],
                 'metricas' => $resultadosAsociados,
-                'tipo' => $tipo
+                'tipo' => $tipo,
+                'siguiente_calculo' => $resultado['siguiente_calculo'],
+                'nombre_caracteristica' => $nombre
             ], 200);
         }
         catch(\Throwable $ex){

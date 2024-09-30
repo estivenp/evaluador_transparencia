@@ -42,24 +42,24 @@ class CalcularValorCaracteristicaService implements CalcularValorCaracteristicaI
         $respuesta['formula'] = '';
         switch($tipo){
             case 'subcaracteristica':
-
                 $respuesta['valor'] = $this->calcularSubcaracteristica($caracteristica->id, $evaluacion->id,$resultadosMetrica);
+                $respuesta['siguiente_calculo'] = "caracteristica";
                 break;
             case 'caracteristica':
-
                 $respuesta['valor'] = $this->calcularCaracteristica($caracteristica->id, $evaluacion->id);
-
+                $respuesta['siguiente_calculo'] = "transparencia";
                 break;
             case 'transparencia':
                 $respuesta['valor'] = $this->calcularTransparencia($evaluacion->id);
+                $respuesta['siguiente_calculo'] = "";
                 break;
         }
         $respuesta['formula'] = $this->formula;
         return $respuesta;
     }
 
-    protected function calcularCaracteristica($id_caracteristica, $id_evaluacion){
-        $valorSubcaracteristicas = $this->caracteristicaRepository->obtenerValoresSubcaracteristicas($id_caracteristica,$id_evaluacion);
+    protected function calcularCaracteristica($idCaracteristica, $idEvaluacion){
+        $valorSubcaracteristicas = $this->caracteristicaRepository->obtenerValoresSubcaracteristicas($idCaracteristica,$idEvaluacion);
         foreach ($valorSubcaracteristicas as $subcaracteristica) {
             $valor = $subcaracteristica->valorCaracteristica->first();
             $this->acumulado += $valor->valor;
@@ -70,11 +70,11 @@ class CalcularValorCaracteristicaService implements CalcularValorCaracteristicaI
         $this->formula .= implode("+", $this->valores). ")";
         $resultado = round($this->acumulado / $this->numMetricas,1);
         $this->formula .= " / ".$this->numMetricas;
-        $valorCaracteristica = $this->valorCaracteristicaRepositoryInterface->obtenerValorCaracteristicaPorEvaluacionYCaracteristica($id_caracteristica,$id_evaluacion);
+        $valorCaracteristica = $this->valorCaracteristicaRepositoryInterface->obtenerValorCaracteristicaPorEvaluacionYCaracteristica($idCaracteristica,$idEvaluacion);
         if(is_null($valorCaracteristica)){
             $this->valorCaracteristicaRepositoryInterface->create([
-                "id_evaluacion" => $id_evaluacion,
-                "id_caracteristica" => $id_caracteristica,
+                "id_evaluacion" => $idEvaluacion,
+                "id_caracteristica" => $idCaracteristica,
                 "valor" => $resultado,
                 "formula" => $this->formula
             ]);
@@ -82,10 +82,10 @@ class CalcularValorCaracteristicaService implements CalcularValorCaracteristicaI
         else{
             $this->valorCaracteristicaRepositoryInterface->update($valorCaracteristica->id,["valor" => $resultado,
             "formula" => $this->formula]);
-        }        
+        }
         return $resultado;
     }
-    protected function calcularSubcaracteristica($id_caracteristica, $id_evaluacion, $resultadosMetrica){
+    protected function calcularSubcaracteristica($idCaracteristica, $idEvaluacion, $resultadosMetrica){
         foreach($resultadosMetrica as $resultadoMetrica){
             $resultado = $resultadoMetrica->resultado;
             if($resultadoMetrica->abreviatura == 'CDD'){
@@ -109,11 +109,11 @@ class CalcularValorCaracteristicaService implements CalcularValorCaracteristicaI
         $this->formula .= implode("+", $this->valores). ")";
         $resultado = round($this->acumulado / $this->numMetricas,1);
         $this->formula .= " / ".$this->numMetricas;
-        $valorCaracteristica = $this->valorCaracteristicaRepositoryInterface->obtenerValorCaracteristicaPorEvaluacionYCaracteristica($id_caracteristica,$id_evaluacion);
+        $valorCaracteristica = $this->valorCaracteristicaRepositoryInterface->obtenerValorCaracteristicaPorEvaluacionYCaracteristica($idCaracteristica,$idEvaluacion);
         if(is_null($valorCaracteristica)){
             $this->valorCaracteristicaRepositoryInterface->create([
-                "id_evaluacion" => $id_evaluacion,
-                "id_caracteristica" => $id_caracteristica,
+                "id_evaluacion" => $idEvaluacion,
+                "id_caracteristica" => $idCaracteristica,
                 "valor" => $resultado,
                 "formula" => $this->formula
             ]);
@@ -124,8 +124,8 @@ class CalcularValorCaracteristicaService implements CalcularValorCaracteristicaI
         }
         return $resultado;
     }
-    protected function calcularTransparencia($id_evaluacion){
-        $valorCaracteristicasPrincipales = $this->caracteristicaRepository->obtenerValoresCaracteristicasPrincipales($id_evaluacion);
+    protected function calcularTransparencia($idEvaluacion){
+        $valorCaracteristicasPrincipales = $this->caracteristicaRepository->obtenerValoresCaracteristicasPrincipales($idEvaluacion);
 
         foreach ($valorCaracteristicasPrincipales as $caracteristica) {
             $valor = $caracteristica->valorCaracteristica->first();
@@ -133,7 +133,7 @@ class CalcularValorCaracteristicaService implements CalcularValorCaracteristicaI
             $this->numMetricas ++;
         }
         $resultado = round($this->acumulado / $this->numMetricas, 1);
-        $this->evaluacionRepository->update($id_evaluacion,["resultado_final"=>$resultado]);
+        $this->evaluacionRepository->update($idEvaluacion,["resultado_final"=>$resultado]);
         return $resultado;
     }
 

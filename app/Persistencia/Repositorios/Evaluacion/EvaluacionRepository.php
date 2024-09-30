@@ -40,9 +40,4 @@ class EvaluacionRepository implements EvaluacionRepositoryInterface
                 ->where('token_expira_en', '>', now())
                 ->first();
     }
-
-    public function getAllWithPlataforma()
-    {
-        return Evaluacion::with('plataformaWeb')->get();
-    }
 }
