@@ -257,6 +257,7 @@ function calcularValorCaracteristica(id_caracteristica, tipo){
             }
         },
         error: function(xhr, status, error) {
+            debugger
             $(document).Toasts('create', {
                     class: 'bg-danger',
                     title: '¡Error!',

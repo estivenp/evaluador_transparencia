@@ -1,10 +1,11 @@
 <div class="form-wrapper" id="contenidoFormulario">
     <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Resultado transparencia "{{ $plataforma->nombre }}"</h3>
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h3 class="card-title mb-0"><strong>Resultado transparencia "{{ $plataforma->nombre }}"</strong></h3>
+            <button type="button" class="btn btn-primary" onclick="generarReporte()">Descargar informe</button>
         </div>
+
         <div class="card-body">
-            
             <div class="row" style="margin-top:10px">
                 <div class="col-md-6">
                     <div class="card">

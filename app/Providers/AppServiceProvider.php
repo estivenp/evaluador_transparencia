@@ -24,6 +24,10 @@ use App\Dominio\Interfaces\ValorCaracteristica\ValorCaracteristicaRepositoryInte
 use App\Persistencia\Repositorios\ValorCaracteristica\ValorCaracteristicaRepository;
 use App\Aplicacion\Servicios\ValorCaracteristica\CalcularValorCaracteristicaService;
 use App\Dominio\Interfaces\ValorCaracteristica\CalcularValorCaracteristicaInterface;
+use App\Dominio\Interfaces\Archivos\GenerarCsvInterface;
+use App\Persistencia\Archivos\GenerarCsv;
+use App\Dominio\Interfaces\ComponenteFormula\ComponenteFormulaRepositoryInterface;
+use App\Persistencia\Repositorios\ComponenteFormula\ComponenteFormulaRepository;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -41,6 +45,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ObtenerDatosCaracteristicaInterface::class, ObtenerDatosCaracteristicaService::class);
         $this->app->bind(CalcularMetricaInterface::class, CalcularMetricaService::class);
         $this->app->bind(CalcularValorCaracteristicaInterface::class, CalcularValorCaracteristicaService::class);
+        $this->app->bind(GenerarCsvInterface::class, GenerarCsv::class);
 
 
         //Repositorios
@@ -50,6 +55,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(MetricaRepositoryInterface::class, MetricaRepository::class);
         $this->app->bind(ResultadoMetricaRepositoryInterface::class, ResultadoMetricaRepository::class);
         $this->app->bind(ValorCaracteristicaRepositoryInterface::class, ValorCaracteristicaRepository::class);
+        $this->app->bind(ComponenteFormulaRepositoryInterface::class, ComponenteFormulaRepository::class);
     }
 
     /**

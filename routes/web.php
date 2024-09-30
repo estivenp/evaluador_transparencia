@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Infraestructura\Http\Controllers\PrincipalController;
 use App\Infraestructura\Http\Controllers\VerTransparenciaController;
 use App\Infraestructura\Http\Controllers\TerminosUsoController;
+use App\Infraestructura\Http\Controllers\GenerarReporteController;
 use App\Infraestructura\Http\Controllers\PaginaWeb\VistaAgregarPaginaWebController;
 use App\Infraestructura\Http\Controllers\PaginaWeb\AgregarPaginaWebController;
 use App\Infraestructura\Http\Controllers\Caracteristica\MostrarCaracteristicaController;
@@ -44,5 +45,7 @@ Route::post('/calcularValorCaracteristica', [CalcularValorCaracteristicaControll
 Route::post('/validarCalculoCaracteristica', [ValidarCalculoCaracteristicaController::class, 'validar']);
 
 Route::post('/validarToken', [ValidarTokenController::class, 'verificar']);
+
+Route::post('/generarReporte', [GenerarReporteController::class, 'generar']);
 
 Route::get('/evaluaciones', [TablaResultadoController::class, 'index'])->name('evaluaciones.index');

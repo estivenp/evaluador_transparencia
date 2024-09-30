@@ -226,6 +226,42 @@
         transparencia.style.display = '';
     }
 
+    function generarReporte(){
+        $.ajax({
+            url: '/generarReporte',
+            method: 'POST',
+            data: {'token':localStorage.getItem('evaluacionToken')},
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            xhrFields: {
+                responseType: 'blob'
+            },
+            success: function(data, status, xhr) {
+                var fecha = xhr.getResponseHeader('fecha');
+                var plataforma = xhr.getResponseHeader('plataforma');
+
+                console.log('Fecha del informe:', fecha);
+                console.log('Plataforma:', plataforma);
+
+                // Crear y descargar el archivo CSV
+                var blob = new Blob([data], {type: 'text/csv'});
+                var downloadUrl = URL.createObjectURL(blob);
+                var a = document.createElement("a");
+                a.href = downloadUrl;
+                a.download = "informe_transparencia_"+plataforma+"_"+fecha+".csv";
+                // a.download = "informe_transparencia.csv";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(downloadUrl);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error generating report:', error);
+            }
+        });
+    }
+
     function verTransparencia(){
         $.ajax({
                 url: '/verTransparencia',

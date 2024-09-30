@@ -34,5 +34,11 @@ class ComponenteFormulaRepository implements ComponenteFormulaRepositoryInterfac
         $evaluacion = ComponenteFormula::findOrFail($id);
         $evaluacion->delete();
     }
+    public function obtenerFormulaMetrica($idMetrica){
+        return ComponenteFormula::where('id_metrica', $idMetrica)
+        ->orderBy('orden')
+        ->selectRaw('GROUP_CONCAT(valor ORDER BY orden SEPARATOR "") as formula')
+        ->value('formula');
+    }
 
 }
