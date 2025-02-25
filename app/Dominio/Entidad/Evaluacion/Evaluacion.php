@@ -8,9 +8,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Dominio\Entidad\ResultadoMetrica\ResultadoMetrica;
 use App\Dominio\Entidad\ValorCaracteristica\ValorCaracteristica;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Evaluacion extends Model
 {
+    use HasFactory;
+    
     protected $table = 'evaluacion';
     protected $fillable = ['id_plataforma', 'fecha_evaluacion', 'resultado_final',
         'token', 'token_expira_en'];

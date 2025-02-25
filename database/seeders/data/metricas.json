@@ -1,0 +1,162 @@
+[
+    {
+        "id_caracteristica": 3,
+        "nombre": "Satisfacción con los mecanismos de protección de datos",
+        "abreviatura": "SMPD",
+        "descripcion": "Esta métrica tiene como objetivo evaluar la percepción de la satisfacción respecto a la manera en que una plataforma web comunica sus políticas de privacidad y los mecanismos que protección de datos ofrecidos a los usuarios durante si iteración con la plataforma.",
+        "unidad": "Porcentaje %",
+        "escala": "[20, 100]",
+        "observaciones": "Opciones de respuesta para P1 y P2: 1 - Muy insatisfecho 2 - Insatisfecho 3 - Neutral 4 - Satisfecho 5 - Muy satisfecho",
+        "ejemplo_utilizacion": "Supongamos que un usuario responde: P1 = 4, P6 = 5. SMPD = (4 + 5) * 10 = 90%. Este resultado indica una alta satisfacción con los mecanismos de protección de datos y seguridad implementados en la plataforma web, cumpliendo con el objetivo."
+    },
+    {
+        "id_caracteristica": 3,
+        "nombre": "Claridad en políticas de privacidad",
+        "abreviatura": "CPP",
+        "descripcion": "Esta métrica tiene como objetivo evaluar el índice de claridad con el que una plataforma web presenta sus políticas de privacidad en relación con la gestión de datos ofrecida a los usuarios durante la iteración con la plataforma.",
+        "unidad": "Porcentaje %",
+        "escala": "[20, 100]",
+        "observaciones": "Opciones de respuesta de P3: 1 - Muy difícil 2 - Difícil 3 - Neutral 4 - Bueno 5 – Excelente. Opciones de respuesta de P4: 1 - Muy deficiente 2 - Deficiente 3 - Neutral 4 - Bueno 5 – Excelente. Opciones de respuesta de P5: 1 - Muy insatisfecho 2 - Insatisfecho 3 - Neutral 4 - Satisfecho 5 – Muy satisfecho.",
+        "ejemplo_utilizacion": "Supongamos que un usuario responde: P3 = 3, P4 = 4, P5 = 5. CPP = ((3 + 4 + 5) / 3) * 20 = 80%. Este resultado indica una buena claridad de las políticas de privacidad que se encuentran implementadas en la plataforma web, cumpliendo con el objetivo."
+    },
+    {
+        "id_caracteristica": 4,
+        "nombre": "Satisfacción con las operaciones de exportación de datos",
+        "abreviatura": "SOED",
+        "descripcion": "Esta métrica tiene como objetivo evaluar la satisfacción de los usuarios con las opciones de datos personales ofrecidas por la plataforma web, específicamente con relación con el proceso de descarga disponible duranta la iteración con la plataforma.",
+        "unidad": "Porcentaje %",
+        "escala": "[20, 100]",
+        "observaciones": "Opciones de respuesta de P6: 1 - Muy difícil 2 - Difícil 3 - Neutral 4 - Bueno 5 – Excelente. Opciones de respuesta de P7 y P8: 1 - Muy insatisfecho 2 - Insatisfecho 3 - Neutral 4 - Bueno 5 - Excelente",
+        "ejemplo_utilizacion": "Supongamos que un usuario responde: P6 = 4, P7 = 3, P8 = 5. SOED = ((4 + 3 + 5) / 3) * 20 = 80%. Este resultado indica una buena satisfacción con las opciones de exportación de datos, alcanzando el valor objetivo."
+    },
+    {
+        "id_caracteristica": 4,
+        "nombre": "Tasa de éxito en la exportación de datos",
+        "abreviatura": "TEED",
+        "descripcion": "Esta métrica tiene como objetivo evaluar la tasa de éxito en el proceso de exportación y descarga de datos personales en una plataforma web durante la iteración con los usuarios.",
+        "unidad": "Porcentaje %",
+        "escala": "[0, 100]",
+        "observaciones": "NEE: Número de exportaciones exitosas. NTIE: Número total de intentos de exportación.",
+        "ejemplo_utilizacion": "Supongamos los siguientes datos: Se van a evaluar 20 intentos de exportación, de los cuales 16 fueron exitosos. TEED = (16 / 20) * 100 = 80%. Este resultado indica una buena tasa de éxito en la exportación de datos, superando el valor objetivo."
+    },
+    {
+        "id_caracteristica": 2,
+        "nombre": "Satisfacción con opciones de accesibilidad",
+        "abreviatura": "SOA",
+        "descripcion": "Esta métrica tiene como objetivo evaluar la percepción de satisfacción respecto a como una plataforma web presenta sus opciones de accesibilidad para usuarios con discapacidades motrices, auditivas o visuales.",
+        "unidad": "Porcentaje %",
+        "escala": "[20, 100]",
+        "observaciones": "Opciones de respuesta de P9 a P11: 1 - Muy insatisfecho 2 - Insatisfecho 3 - Neutral 4 - Satisfecho 5 - Muy satisfecho",
+        "ejemplo_utilizacion": "Supongamos que un usuario responde: P9 = 4, P10 = 3, P11 = 5. SOA = ((4 + 3 + 5) / 3) * 20 = 80%. Este resultado indica una buena satisfacción con las opciones de accesibilidad presentadas en la plataforma web, alcanzando el valor objetivo."
+    },
+    {
+        "id_caracteristica": 2,
+        "nombre": "Compatibilidad con diferentes dispositivos",
+        "abreviatura": "CDD",
+        "descripcion": "Esta métrica tiene como objetivo evaluar el índice de compatibilidad de una plataforma web en la gestión y el acceso de datos personales desde diversos tipos de dispositivos, incluyendo computadores de escritorio, laptops y dispositivos móviles.",
+        "unidad": "Compatibilidad",
+        "escala": "[1, 3]",
+        "observaciones": "Puntuación de compatibilidad: 1 punto - El dispositivo permite acceder a la plataforma, pero no gestionar datos personales. 2 puntos - El dispositivo permite acceder a la plataforma y gestionar datos personales de manera limitada. 3 puntos - El dispositivo permite acceder a la plataforma y gestionar datos personales de manera completa.",
+        "ejemplo_utilizacion": "Supongamos que se evaluaron 4 tipos de dispositivos con los siguientes resultados: Computadora de escritorio: 3 puntos, Laptop: 3 puntos, Tablet: 2 puntos, Smartphone: 2 puntos. CDD = (3 + 3 + 2 + 2) / 4 = 2.5. Este resultado indica una alta compatibilidad entre los diferentes dispositivos y la plataforma web, cumpliendo con el objetivo planteado."
+    },
+    {
+        "id_caracteristica": 5,
+        "nombre": "Experiencia en la consistencia de datos",
+        "abreviatura": "ECD",
+        "descripcion": "Esta métrica tiene como objetivo evaluar la percepción de santificación del usuario sobre la consistencia de datos proporcionada por una plataforma web, específicamente en relación a la presentación y almacenamiento de la información personal durante la iteración con la plataforma.",
+        "unidad": "Porcentaje %",
+        "escala": "[20, 100]",
+        "observaciones": "Opciones de respuesta para P12: 1 - Muy frecuentemente 2 - Frecuentemente 3 - Ocasionalmente 4 - Raramente 5 – Nunca. Opciones de respuesta para P13: 1 - Muy insatisfecho 2 - Insatisfecho 3 - Neutral 4 - Satisfecho 5 - Muy satisfecho",
+        "ejemplo_utilizacion": "Supongamos que un usuario responde: P12 = 4, P13 = 5. ECD = (4 + 5) * 10 = 90%. Este resultado indica una alta experiencia en cuanto a la consistencia de datos, superando el valor objetivo."
+    },
+    {
+        "id_caracteristica": 5,
+        "nombre": "Facilidad de corrección de datos",
+        "abreviatura": "FCD",
+        "descripcion": "Esta métrica tiene como objetivo evaluar la percepción del usuario sobre la facilidad de corrección de datos personales previamente almacenados con errores en una plataforma web.",
+        "unidad": "Porcentaje %",
+        "escala": "[20, 100]",
+        "observaciones": "Opciones de respuesta para P14 y P15: 1 - Muy insatisfecho 2 - Insatisfecho 3 - Neutral 4 - Satisfecho 5 - Muy satisfecho",
+        "ejemplo_utilizacion": "Supongamos que un usuario responde: P14 = 4, P15 = 3. FCD = (4 + 3) * 10 = 70%. Este resultado indica una facilidad aceptable para corregir datos por parte de los usuarios en la plataforma web, cumpliendo con el objetivo planteado."
+    },
+    {
+        "id_caracteristica": 6,
+        "nombre": "Satisfacción de la consistencia de datos",
+        "abreviatura": "SCD",
+        "descripcion": "Esta métrica tiene como objetivo evaluar la percepción de satisfacción de los usuarios con respecto a la consistencia de los datos proporcionada por una plataforma web. Esto incluye como se presentan y almacenan los datos a lo largo del tiempo durante la interacción con la plataforma.",
+        "unidad": "Porcentaje %",
+        "escala": "[20, 100]",
+        "observaciones": "N/A",
+        "ejemplo_utilizacion": "Supongamos que un usuario responde: P16 = 4, P17 = 3 y P18 = 4. SCD = ((4 + 3 + 4)/3) * 20 = 73%. Este resultado indica una consistencia en los datos aceptable, cumpliendo con el valor objetivo."
+    },
+    {
+        "id_caracteristica": 6,
+        "nombre": "Índice de consistencia de datos",
+        "abreviatura": "ICD",
+        "descripcion": "Esta métrica tiene como objetivo evaluar el índice de consistencia en el almacenamiento de datos personales por parte de una plataforma web durante la interacción con los usuarios.",
+        "unidad": "Porcentaje %",
+        "escala": "[1, 100]",
+        "observaciones": "NRC: Número de registros consistentes. NTRV: Número total de registros verificados",
+        "ejemplo_utilizacion": "Supongamos que se verificaron 20 registros y se encontraron 18 consistentes: ICD = (18 / 20) * 100 = 90%. Este resultado indica una alta consistencia en el almacenamiento de datos, superando el valor objetivo."
+    },
+    {
+        "id_caracteristica": 8,
+        "nombre": "Flexibilidad de configuración de datos",
+        "abreviatura": "FCD2",
+        "descripcion": "Esta métrica tiene como objetivo evaluar la percepción de la flexibilidad que ofrece una plataforma web en la configuración de datos personales, en términos de estructura y presentación visual a los usuarios.",
+        "unidad": "Porcentaje %",
+        "escala": "[20, 100]",
+        "observaciones": "Opciones de respuesta para P19: 1 - Muy difícil 2 – Difícil 3 - Neutral 4 - Fácil 5 - Muy fácil. Opciones de respuesta para P20: 1 - Muy inflexible 2 – Inflexible 3 - Neutral 4 - Flexible 5 - Muy flexible. Opciones de respuesta para P21: 1 - Muy insatisfecho 2 - Insatisfecho 3 - Neutral 4 - Satisfecho 5 - Muy satisfecho",
+        "ejemplo_utilizacion": "Supongamos que un usuario responde: P19 = 4, P20 = 4, P21 = 5. FCD2 = ((4 + 4 + 5) / 15) * 100 = 86.6%. Este resultado indica una buena flexibilidad en la configuración de la estructura de los datos en la plataforma web, cumpliendo con el valor objetivo."
+    },
+    {
+        "id_caracteristica": 8,
+        "nombre": "Índice de personalización de interfaces de usuario",
+        "abreviatura": "IPIU",
+        "descripcion": "Esta métrica tiene como objetivo cuantificar el índice de personalización que una plataforma web ofrece para ajustar las interfaces de gestión de datos según las preferencias del usuario.",
+        "unidad": "Porcentaje %",
+        "escala": "[0, 100]",
+        "observaciones": "NEIP: Número de elementos de interfaz personalizables. NTEI: Número total de elementos de interfaz",
+        "ejemplo_utilizacion": "Supongamos que tenemos los siguientes datos: Interfaz tiene 20 elementos y 15 de ellos son personalizables. IPIU = (15 / 20) * 100 = 75%. Este resultado indica una flexibilidad aceptable en la personalización de interfaces, cumpliendo con el valor objetivo."
+    },
+    {
+        "id_caracteristica": 9,
+        "nombre": "Satisfacción del usuario con la claridad visual",
+        "abreviatura": "SUCV",
+        "descripcion": "Esta métrica tiene como objetivo evaluar la percepción de satisfacción respecto a la claridad visual proporcionada por una plataforma web en relación con la información presentada a los usuarios.",
+        "unidad": "Porcentaje %",
+        "escala": "[20, 100]",
+        "observaciones": "Opciones de respuesta para P22 y P23: 1 - Muy difícil 2 – Difícil 3 - Neutral 4 - Fácil 5 - Muy fácil. Opciones de respuesta para P24: 1 - Muy insatisfecho 2 - Insatisfecho 3 - Neutral 4 - Satisfecho 5 - Muy satisfecho.",
+        "ejemplo_utilizacion": "Supongamos que un usuario responde: P26 = 4, P27 = 5, P28 = 4. SUCV = ((4 + 5 + 4) / 3) * 20 = 86.67%. Este resultado indica una buena satisfacción con la claridad visual de la información presentada, superando el valor objetivo."
+    },
+    {
+        "id_caracteristica": 9,
+        "nombre": "Tasa de reconocimiento de elementos",
+        "abreviatura": "TRE",
+        "descripcion": "Esta métrica tiene como objetivo cuantificar la tasa de reconocimiento de una plataforma web, con relación a los elementos en la interfaz de usuario, evaluando la capacidad para identificar correctamente elementos como: botones, iconos, enlaces, durante la interacción con la plataforma.",
+        "unidad": "Porcentaje %",
+        "escala": "[0, 100]",
+        "observaciones": "NECI: Número de elementos correctamente identificados. NTEE: Número total de elementos evaluados.",
+        "ejemplo_utilizacion": "Supongamos que: Se evaluaron 20 elementos y los usuarios identificaron correctamente 18: TRE = (18 / 20) * 100 = 90%. Este resultado indica una alta tasa elementos identificados correctamente, alcanzando el valor objetivo."
+    },
+    {
+        "id_caracteristica": 10,
+        "nombre": "Satisfacción del usuario con la consistencia",
+        "abreviatura": "SUC",
+        "descripcion": "Esta métrica tiene como objetivo evaluar la percepción de satisfacción respecto a la consistencia ofrecida por una plataforma web en la presentación de la información a los usuarios.",
+        "unidad": "Porcentaje %",
+        "escala": "[20, 100]",
+        "observaciones": "Escala para P24: 1 - Muy inconsistente 2 - Inconsistente 3 - Neutral 4 - Consistente 5 - Muy consistente. Escala para P25: 1 - Muy insatisfecho 2 - Insatisfecho 3 - Neutral 4 - Satisfecho 5 - Muy satisfecho. Escala para P26: 1 - Muy no uniforme 2 - No uniforme 3 - Neutral 4 - Uniforme 5 - Muy uniforme",
+        "ejemplo_utilizacion": "Supongamos que un usuario responde: P24 = 4, P25 = 5, P26 = 4. SUC = ((4 + 5 + 4) / 3) * 20 = 86.67%. Este resultado indica una buena satisfacción con la consistencia y coherencia de la información, cumpliendo el valor objetivo."
+    },
+    {
+        "id_caracteristica": 10,
+        "nombre": "Satisfacción de consistencia visual",
+        "abreviatura": "SCV",
+        "descripcion": "Esta métrica tiene como objetivo evaluar la percepción de satisfacción respecto a la consistencia en el diseño visual de una plataforma web al momento en que un usuario interactúa con ella y con sus elementos.",
+        "unidad": "Porcentaje %",
+        "escala": "[20, 100]",
+        "observaciones": "Escala para P27: 1 - Muy inconsistente 2 - Inconsistente 3 - Neutral 4 - Consistente 5 - Muy consistente. Escala para P28: 1 - Muy no uniforme 2 - No uniforme 3 - Neutral 4 - Uniforme 5 - Muy uniforme. Escala para P29: 1 - Muy incoherente 2 - Incoherente 3 - Neutral 4 - Coherente 5 - Muy coherente",
+        "ejemplo_utilizacion": "Supongamos que Un evaluador responde: P27 = 4, P28 = 5, P29 = 4. SCV = ((4 + 5 + 4) / 3) * 20 = 86.67%. Este resultado indica una buena consistencia visual asociadas a los elementos de la plataforma web, cumpliendo el valor objetivo."
+    }
+]

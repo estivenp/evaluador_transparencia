@@ -13,6 +13,7 @@ use App\Dominio\Interfaces\Evaluacion\EvaluacionRepositoryInterface;
 
 class AgregarPaginaWebController extends BaseController
 {
+
     private $plataformaWebRepository;
     private $caracteristicaRepository;
     private $evaluacionRepository;

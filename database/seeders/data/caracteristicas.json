@@ -1,0 +1,107 @@
+[
+    {
+        "id_caracteristica_principal": null,
+        "nombre": "disponibilidad",
+        "descripcion": "La característica en cuestión"
+    },
+    {
+        "id_caracteristica_principal": "1",
+        "nombre": "accesibilidad",
+        "descripcion": "Esta característica"
+    },
+    {
+        "id_caracteristica_principal": "1",
+        "nombre": "privacidad",
+        "descripcion": "Esta característica alude a la capacidad de una plataforma web para prevenir la divulgación no autorizada de los datos de los usuarios que interactúan en ella. Además"
+    },
+    {
+        "id_caracteristica_principal": "1",
+        "nombre": "portabilidad",
+        "descripcion": "En términos generales"
+    },
+    {
+        "id_caracteristica_principal": "1",
+        "nombre": "integridad",
+        "descripcion": "Esta característica hace referencia a la capacidad de una plataforma web para salvaguardar la precisión"
+    },
+    {
+        "id_caracteristica_principal": "1",
+        "nombre": "confiabilidad",
+        "descripcion": "La fiabilidad es una característica esencial de las plataformas web"
+    },
+    {
+        "id_caracteristica_principal": null,
+        "nombre": "usabilidad",
+        "descripcion": "Esta característica hace referencia a la capacidad de una plataforma web para definir el grado en que los datos puedan ser empleados por usuarios específicos para alcanzar sus objetivos de manera eficaz y satisfactoria. Para esto"
+    },
+    {
+        "id_caracteristica_principal": "7",
+        "nombre": "adaptabilidad",
+        "descripcion": "Esta característica se refiere a la capacidad de una plataforma web para ajustarse y responder eficazmente a diversos requisitos y entornos de datos. Esto conlleva la habilidad de modificar"
+    },
+    {
+        "id_caracteristica_principal": "7",
+        "nombre": "legibilidad",
+        "descripcion": "La característica en discusión se refiere a la habilidad de una plataforma web para presentar contenido de manera comprensible"
+    },
+    {
+        "id_caracteristica_principal": "7",
+        "nombre": "consistencia",
+        "descripcion": "La característica en cuestión se refiere a la capacidad de una plataforma web para mantener una coherencia lógica en la información y el contenido que proporciona"
+    },
+    {
+        "id_caracteristica_principal": null,
+        "nombre": "informatividad",
+        "descripcion": "Esta característica se refiere a la habilidad de una plataforma web para proveer o transmitir información. Esta se define como la capacidad de difundir información de alta calidad"
+    },
+    {
+        "id_caracteristica_principal": "11",
+        "nombre": "actualidad",
+        "descripcion": "La actualidad se refiere a la capacidad de una plataforma web de mantenerse al día o pertenecer al tiempo presente [6]. En el ámbito de la gestión de datos"
+    },
+    {
+        "id_caracteristica_principal": "11",
+        "nombre": "concision",
+        "descripcion": "La concisión se refiere a la habilidad de una plataforma web de transmitir información de manera efectiva en pocas palabras. Esta característica mejora la comunicación al eliminar redundancias y palabras innecesarias"
+    },
+    {
+        "id_caracteristica_principal": "11",
+        "nombre": "completitud",
+        "descripcion": "La característica en cuestión se refiere a la completitud de una plataforma web"
+    },
+    {
+        "id_caracteristica_principal": null,
+        "nombre": "seguridad",
+        "descripcion": "Esta característica"
+    },
+    {
+        "id_caracteristica_principal": "15",
+        "nombre": "confidencialidad",
+        "descripcion": "Esta característica"
+    },
+    {
+        "id_caracteristica_principal": "15",
+        "nombre": "autenticidad",
+        "descripcion": "Según la norma ISO 25000"
+    },
+    {
+        "id_caracteristica_principal": null,
+        "nombre": "auditabilidad",
+        "descripcion": "Esta característica se refiere a la habilidad de una plataforma web para ejercer control sobre el acceso"
+    },
+    {
+        "id_caracteristica_principal": "18",
+        "nombre": "verificabilidad",
+        "descripcion": "Esta característica se refiere a la capacidad de una plataforma web para proporcionar mecanismos que aseguren la precisión"
+    },
+    {
+        "id_caracteristica_principal": "18",
+        "nombre": "trazabilidad",
+        "descripcion": "Esta característica se refiere a la capacidad que ofrece una plataforma web para rastrear el origen"
+    },
+    {
+        "id_caracteristica_principal": "18",
+        "nombre": "no repudio",
+        "descripcion": "Según la norma ISO 25000"
+    }
+]

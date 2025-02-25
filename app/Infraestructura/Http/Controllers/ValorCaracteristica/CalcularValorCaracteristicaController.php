@@ -63,7 +63,7 @@ class CalcularValorCaracteristicaController extends BaseController
             }
             return response()->json([
                 'estado' => 'exito',
-                'id_caracteristica' => $caracteristica->id,
+                'id_caracteristica' => $id_caracteristica,
                 'resultado' => $resultado['valor'],
                 'formula' => $resultado['formula'],
                 'metricas' => $resultadosAsociados,
